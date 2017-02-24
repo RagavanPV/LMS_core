@@ -24,7 +24,7 @@ public class Employee {
 @GeneratedValue(strategy=GenerationType.AUTO)
 private Integer id;
 
-@OneToOne(targetEntity=User.class)
+@ManyToOne(targetEntity=User.class)
 @JoinColumn(name="USER_ID", referencedColumnName="ID")
 private User userId;
 
