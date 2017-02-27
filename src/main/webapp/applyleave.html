@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
+    <!-- <link rel="stylesheet" type="text/css" href="login.css">
+ -->
+    <script src="https://code.jquery.com/jquery-3.1.1.slim.min.js" integrity="sha384-A7FZj7v+d/sdmMqp/nOQwliLvUsJfDHW+k9Omg/a/EheAdgtzNs3hpfag6Ed950n" crossorigin="anonymous"></script>
+    <script type="text/javascript">
+    $(document).ready(function() {
+        $("input[name$='days']").click(function() {
+            var test = $(this).val();
+            var code;
+            $("#Days").empty();
+            if (test == 1) {
+                code = "<div class='form-group row'><label for='example-date-input' class='col-2 col-form-label'> From Date</label><div class='col-10'><input class='form-control' name='frm_date' required type='date' id='example-date-input'></div></div><div class='form-group row'><label for='example-date-input' class='col-2 col-form-label'> To Date </label><div class='col-10'><input class='form-control' name='to_date' required type='date' id='example-date-input'></div></div>";
+            } else {
+                code = "<div class='form-group row'><label for='example-date-input' class='col-2 col-form-label'>Date of Leave</label><div class='col-10'><input class='form-control' name='date_of_leave' required type='date' id='example-date-input'></div></div><div class='form-group row'><label for='session-select' class='col-2 col-form-label'>Session</label><div id='session-select' class='col-10'><div class='form-check'><label class='form-check-label'><input class='form-check-input' required type='radio' name='fromFn' id='gridRadios1' value='1'> FN</label></div><div class='form-check'><label class='form-check-label'><input class='form-check-input' required type='radio' name='FromFn' id='gridRadios2' value='2'> AN</label></div></div></div>";
+            }
+            $("#Days").html(code);
+
+        });
+    });
+    </script>
+</head>
+
+<body style="padding-top: 100px;">
+    <nav class="navbar fixed-top navbar-toggleable-md navbar-light bg-faded">
+        <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <a class="navbar-brand" href="#"><img src="images/logo.jpg" width="40px" height="40px" alt="LMS">LMS</a>
+        <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
+            <ul class="navbar-nav">
+                <li class="nav-item active">
+                    <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+                </li>
+                <div class="float-right">
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Name
+        </a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                            <a class="dropdown-item" href="#">Action</a>
+                            <a class="dropdown-item" href="#">Another action</a>
+                            <a class="dropdown-item" href="#">Something else here</a>
+                        </div>
+                    </li>
+                </div>
+            </ul>
+        </div>
+    </nav>
+    <main class="container">
+        <div class="container">
+            <form method="GET" action="index.html">
+                <h2 class="form-signin-heading">Apply Leave</h2>
+                <div class="form-group row">
+                    <label for="exampleSelect1" class="col-2">Leave Type</label>
+                    <select required name="type" class="form-control col-10" id="exampleSelect1">
+                        <option value="1">Paid Leave</option>
+                        <option value="2">Sick Leave</option>
+                        <option value="3">Casual Leave</option>
+                        <option value="4">Privileged Leave</option>
+                        <option value="5">Maternity Leave</option>
+                    </select>
+                </div>
+                <div class="form-group row">
+                    <label for="session-select" class="col-2 col-form-label">Days</label>
+                    <div id="session-select" class="col-10">
+                        <div class="form-check">
+                            <label class="form-check-label">
+                                <input class="form-check-input" required type="radio" name="days" id="gridRadios1" value="1"> FullDay
+                            </label>
+                        </div>
+                        <div class="form-check">
+                            <label class="form-check-label">
+                                <input class="form-check-input" required type="radio" name="days" id="gridRadios2" value="2"> HalfDay
+                            </label>
+                        </div>
+                    </div>
+                </div>
+                <div id="Days" class="desc">
+                </div>
+                <div class="form-group row">
+                    <label for="exampleTextarea" class="col-2">Reason</label>
+                    <textarea name="reason" required class="form-control col-10" id="exampleTextarea" rows="3"></textarea>
+                </div>
+                <input type="submit" value="Apply Leave" class="btn btn-lg btn-primary">
+            </form>
+        </div>
+    </main>
+    <!-- jQuery first, then Tether, then Bootstrap JS. -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>
+</body>
+
+</html>

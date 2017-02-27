@@ -19,7 +19,7 @@ public class UserServiceImpl{
 	
 	public List<User> list() throws DataServiceException {
 		List<User> users=null;
-		users=userDAO.list();
+		users=userDAO.getAllUsers();
 		logger.info("Users retrived successfully");
 		return users;
 	}

@@ -22,9 +22,7 @@ public class DataRetriverImpl implements DataRetriver {
 	public <E> List<E> retrieveBySQL(String queryString) throws DataAccessException {
 		List<E> list = null;
 		try {
-			System.out.println("Retreiver");
 			list = sessionFactory.getCurrentSession().createSQLQuery(queryString).list();
-			System.out.println("Retreiver");
 			logger.info("data retrieval success..");
 		} catch (Exception e) {
 			System.out.println("Retreiver exception");
@@ -33,5 +31,20 @@ public class DataRetriverImpl implements DataRetriver {
 		}
 		return list;
 	}
+	/*public Object getDetail(String queryString) throws DataAccessException{
+		Object obj=null;
+		try {
+			System.out.println("retreiver");
+			obj =  sessionFactory.getCurrentSession().createSQLQuery(queryString).uniqueResult();
+			logger.info("data retrieval success..");
+		} catch (Exception e) {
+			System.out.println(e);
+			logger.error(e.getMessage(), e);
+			throw new DataAccessException(e.getMessage(), e);
+		}
+		return obj;
+		
+	}*/
+	
 
 }
