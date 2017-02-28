@@ -2,6 +2,8 @@ package com.revature.data.impl;
 
 import java.util.List;
 
+import javax.persistence.EntityManager;
+
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -19,6 +21,8 @@ public class UserDAOImpl{
 	private static Logger logger = Logger.getLogger(UserDAOImpl.class);
 	@Autowired
 	private DataRetriver dataRetriver;
+	@Autowired
+	private EntityManager entityManager;
 
 	public DataRetriver getDataRetriver() {
 		return dataRetriver;
@@ -28,16 +32,11 @@ public class UserDAOImpl{
 		this.dataRetriver = dataRetriver;
 	}
 
-	public List<User> getAllUsers() throws DataServiceException{
+	public List<User> getAllUsers(){
 		List<User> users = null;
-		try {
-			StringBuilder sb = new StringBuilder("select * from users");
-			users = dataRetriver.retrieveBySQL(sb.toString());
-			logger.info("data retrieval success..");
-		} catch (DataAccessException e) {
-			logger.error(e.getMessage(), e);
-			throw new DataServiceException(DataUtils.getPropertyMessage("data_retrieval_fail"), e);
-		}
+		StringBuilder sb = new StringBuilder("select * from users");
+		users = entityManager.createNativeQuery(sb.toString(),User.class).getResultList();
+		logger.info("data retrieval success..");
 		return users;
 	}
 	public List<User> listUser(User user) throws DataServiceException{
