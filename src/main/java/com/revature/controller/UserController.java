@@ -14,6 +14,7 @@ import com.revature.biz.impl.UserServiceImpl;
 import com.revature.controller.exception.InternalException;
 import com.revature.data.exception.DataServiceException;
 import com.revature.data.impl.UserDAOImpl;
+import com.revature.dto.UserDTO;
 import com.revature.model.User;
 
 @RestController

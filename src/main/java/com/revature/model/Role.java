@@ -32,7 +32,7 @@ public class Role {
 	    @Column(name = "CODE")
 	    private String code;
 	    @Basic(optional = false)
-	    @Column(name = "ROLE")
+	    @Column(name = "NAME")
 	    private String role;
 	    @Basic(optional = false)
 	    @Column(name = "LEVEL")

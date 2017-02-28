@@ -3,6 +3,7 @@ package com.revature.data.access.impl;
 import java.util.List;
 
 import javax.persistence.EntityManager;
+import javax.transaction.Transactional;
 
 import org.apache.log4j.Logger;
 import org.hibernate.Criteria;
@@ -22,7 +23,7 @@ import com.revature.model.Department;
 import com.revature.model.Employee;
 import com.revature.model.Role;
 import com.revature.model.User;
-
+@Transactional
 @Repository
 @SuppressWarnings("unchecked")
 public class DataRetriverImpl implements DataRetriver {
@@ -36,7 +37,7 @@ public class DataRetriverImpl implements DataRetriver {
 	public <E> List<E> retrieveBySQL(String queryString) throws DataAccessException {
 		List<E> list = null;
 		try {
-			list = sessionFactory.getCurrentSession().createSQLQuery(queryString).list();
+			list = sessionFactory.getCurrentSession().createSQLQuery(queryString).setResultTransformer(Transformers.ALIAS_TO_ENTITY_MAP).list();
 			logger.info("data retrieval success..");
 		} catch (Exception e) {
 			System.out.println("Retreiver exception");
