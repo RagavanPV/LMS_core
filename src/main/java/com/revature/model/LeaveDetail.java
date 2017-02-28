@@ -39,8 +39,8 @@ private String session;
 @Column(name="REASON")
 
 private String reason;
-@Column(name="STATUS")
-
-private String status;
+@ManyToOne(targetEntity=LeaveStatus.class)
+@JoinColumn(name="STATUS",referencedColumnName="ID")
+private LeaveStatus leaveStatus;
 
 }

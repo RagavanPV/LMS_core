@@ -8,6 +8,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 import lombok.Data;
@@ -15,12 +17,15 @@ import lombok.Data;
 @Data
 @Entity
 @Table(name="users",catalog="lms-app")
-public class User {
+public class User{
 @Id
 @GeneratedValue(strategy=GenerationType.AUTO)
 private Integer id;
 @Column(name="EMAIL_ID")
 private String emailId;
+@ManyToOne(targetEntity=Employee.class)
+@JoinColumn(name="EMPLOYEE_ID", referencedColumnName="ID")
+private Employee employeeId;
 @Column(name="PASSWORD")
 
 private String password;
