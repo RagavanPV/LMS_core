@@ -3,6 +3,7 @@ package com.revature.data.access;
 import java.util.List;
 
 import com.revature.data.access.exception.DataAccessException;
+import com.revature.model.User;
 
 public interface DataRetriver {
   /**
