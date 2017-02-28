@@ -3,7 +3,9 @@ package com.revature.data.impl;
 import java.util.List;
 
 import javax.persistence.EntityManager;
+
 import javax.persistence.Query;
+
 
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,6 +25,7 @@ public class UserDAOImpl{
 
 
 
+
 	
 	public List<User> list() throws DataServiceException{
 		
@@ -30,6 +33,7 @@ public class UserDAOImpl{
 		List<User> users=q.getResultList();
 	
 		logger.info("Categories data retrieval success..");
+
 		return users;
 		
 		

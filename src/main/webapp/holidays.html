@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" ng-app="holidayApp">
 
 <head>
     <!-- Required meta tags -->
@@ -7,9 +7,18 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
+    <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.2.26/angular.min.js"></script>
+    <script>
+    var holidayApp = angular.module('holidayApp', []);
+    holidayApp.controller('holidayCtrl', function($scope, $http) {
+        $http.get('holidays.json').success(function(data) {
+            $scope.holidays = data;
+        });
+    });
+    </script>
 </head>
 
-<body>
+<body ng-controller="holidayCtrl">
     <nav class="navbar fixed-top navbar-toggleable-md navbar-light bg-faded
 ">
         <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo" aria-expanded="false" aria-label="Toggle navigation">
@@ -44,23 +53,11 @@
                     <th>Date</th>
                     <th>Day</th>
                 </thead>
-                <tr>
-                    <td>1</td>
-                    <td>Pongal</td>
-                    <td>12/03/2017</td>
-                    <td>Monday</td>
-                </tr>
-                <tr>
-                    <td>2</td>
-                    <td>Diwali</td>
-                    <td>12/03/2017</td>
-                    <td>Tuesday</td>
-                </tr>
-                <tr>
-                    <td>3</td>
-                    <td>Christmas</td>
-                    <td>12/12/2017</td>
-                    <td>Saturday</td>
+                <tr ng-repeat="holiday in holidays">
+                    <td>{{holiday.id}}</td>
+                    <td>{{holiday.name}}</td>
+                    <td>{{holiday.date}}</td>
+                    <td>{{holiday.day}}</td>
                 </tr>
             </table>
         </div>
