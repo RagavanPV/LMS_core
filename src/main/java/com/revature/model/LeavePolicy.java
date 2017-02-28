@@ -1,39 +1,51 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
 package com.revature.model;
 
-
+import java.io.Serializable;
+import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
 import javax.persistence.Table;
+import javax.xml.bind.annotation.XmlRootElement;
 
-import lombok.Data;
-
-@Data
+/**
+ *
+ * @author Akshay
+ */
 @Entity
-@Table(name="leave_policy",catalog="lms-app")
-public class LeavePolicy {
-@Id
-@GeneratedValue(strategy=GenerationType.AUTO)
-private Integer id;
+@Table(name = "leave_policy")
 
-@ManyToOne(targetEntity=Policy.class)
-@JoinColumn(name="POLICY_ID",referencedColumnName="ID")
-private Policy policyId;
+public class LeavePolicy implements Serializable {
 
-@ManyToOne(targetEntity=Role.class)
-@JoinColumn(name="ROLE_ID",referencedColumnName="ID")
-private Role roleId;
+    private static final long serialVersionUID = 1L;
+    @Id
+    @Basic(optional = false)
+    @Column(name = "ID")
+    private Integer id;
+    @Basic(optional = false)
+    @Column(name = "NO_OF_DAYS")
+    private int noOfDays;
+    @JoinColumn(name = "LEAVE_TYPE_ID", referencedColumnName = "ID")
+    @ManyToOne(optional = false)
+    private LeaveType leaveTypeId;
+    @JoinColumn(name = "POLICY_ID", referencedColumnName = "ID")
+    @ManyToOne(optional = false)
+    private Policy policyId;
+    @JoinColumn(name = "ROLE_ID", referencedColumnName = "ID")
+    @ManyToOne(optional = false)
+    private Role roleId;
 
-@ManyToOne(targetEntity=LeaveType.class)
-@JoinColumn(name="LEAVE_TYPE_ID",referencedColumnName="ID")
-private LeaveType leaveTypeId;
+    public LeavePolicy() {
+    }
 
-@Column(name="NO_OF_DAYS")
-private Integer noOfDays;
-
-
+    
 }

@@ -17,10 +17,5 @@ public class UserServiceImpl{
 	@Autowired
 	private  UserDAOImpl userDAO;
 	
-	public List<User> list() throws DataServiceException {
-		List<User> users=null;
-		users=userDAO.getAllUsers();
-		logger.info("Users retrived successfully");
-		return users;
-	}
+	
 }
