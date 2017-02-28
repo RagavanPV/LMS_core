@@ -35,7 +35,7 @@ public class Employee implements Serializable {
 	    @Column(name = "ID")
 	    private Integer id;
 	    @Basic(optional = false)
-	    @Column(name = "EMPLOYEE")
+	    @Column(name = "NAME")
 	    private String employee;
 	    @Basic(optional = false)
 	    @Column(name = "GENDER")
@@ -43,10 +43,10 @@ public class Employee implements Serializable {
 	    @Column(name = "MANAGER_ID")
 	    private Integer managerId;
 	    @Basic(optional = false)
-	    @Column(name = "JOINING")
+	    @Column(name = "JOINING_DATE")
 	    @Temporal(TemporalType.DATE)
 	    private Date joining;
-	    @Column(name = "RELEAVING")
+	    @Column(name = "RELEAVING_DATE")
 	    @Temporal(TemporalType.DATE)
 	    private Date releaving;
 	    @Lob

@@ -32,7 +32,7 @@ public class Department implements Serializable{
     @Column(name = "CODE")
     private String code;
     @Basic(optional = false)
-    @Column(name = "DEPARTMENT")
+    @Column(name = "NAME")
     private String department;
   
 

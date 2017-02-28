@@ -2,6 +2,7 @@ package com.revature.dto;
 
 
 import java.time.LocalDateTime;
+import java.util.Date;
 
 import lombok.Data;
 
@@ -12,5 +13,5 @@ private String emailId;
 private String password;
 private String activationCode;
 private Boolean isActive;
-private LocalDateTime lastLogin;
-}
+private Date lastLogin;
+} 

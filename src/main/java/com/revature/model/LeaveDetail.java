@@ -61,6 +61,9 @@ public class LeaveDetail implements Serializable {
     @JoinColumn(name = "STATUS", referencedColumnName = "ID")
     @ManyToOne(optional = false)
     private LeaveStatus status;
+    @JoinColumn(name = "HANDLED_BY", referencedColumnName = "ID")
+    @ManyToOne(optional = false)
+    private Employee handledbyid;
 
     public LeaveDetail() {
     }
