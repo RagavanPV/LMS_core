@@ -3,7 +3,6 @@ package com.revature.data.access;
 import java.util.List;
 
 import com.revature.data.access.exception.DataAccessException;
-import com.revature.model.User;
 
 public interface DataRetriver {
   /**
@@ -13,6 +12,8 @@ public interface DataRetriver {
    * @return the requested data
    * @throws DataAccessException if query format error
    */
-  public <E> List<E> retrieveBySQL(String query) throws DataAccessException;
+  public <E> List<E> retrieveListBySQL(String query) throws DataAccessException;
+  
+  public <E> Object retrieveOneBySQL(String query) throws DataAccessException;
 
 }

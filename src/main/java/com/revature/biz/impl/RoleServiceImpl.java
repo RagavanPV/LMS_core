@@ -17,7 +17,7 @@ public class RoleServiceImpl {
 	@Autowired
 	private  RoleDAOImpl RoleDAO;
 	
-	public List<Role> list() throws DataServiceException {
+	public List<Role> getAllRoles() throws DataServiceException {
 		List<Role> role=null;
 		role=RoleDAO.getAllRoles();
 		logger.info("retrived successfully");

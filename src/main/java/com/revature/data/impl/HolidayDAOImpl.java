@@ -30,8 +30,8 @@ public class HolidayDAOImpl {
 	public List<Holiday> getAllHolidays() throws DataServiceException{
 		List<Holiday> holidays = null;
 		try {
-			StringBuilder sb = new StringBuilder("select * from holidays");
-			holidays = dataRetriver.retrieveBySQL(sb.toString());
+			StringBuilder sb = new StringBuilder("SELECT ID,NAME,HOLIDAY_DATE,DAYNAME(HOLIDAY_DATE) AS DAY FROM HOLIDAYS");
+			holidays = dataRetriver.retrieveListBySQL(sb.toString());
 			logger.info("data retrieval success..");
 		} catch (DataAccessException e) {
 			logger.error(e.getMessage(), e);

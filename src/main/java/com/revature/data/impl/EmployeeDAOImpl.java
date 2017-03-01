@@ -31,7 +31,7 @@ public class EmployeeDAOImpl {
 		List<Employee> employees = null;
 		try {
 			StringBuilder sb = new StringBuilder("select * from employees");
-			employees = dataRetriver.retrieveBySQL(sb.toString());
+			employees = dataRetriver.retrieveListBySQL(sb.toString());
 			logger.info("Categories data retrieval success..");
 		} catch (DataAccessException e) {
 			logger.error(e.getMessage(), e);

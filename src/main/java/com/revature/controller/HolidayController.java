@@ -20,16 +20,14 @@ public class HolidayController {
 
 	@Autowired
 	private HolidayServiceImpl holidayService;
-	/*@Autowired
-	private UserDAOImpl user;*/
 
 	@GetMapping("/")
 	public List<Holiday> getAllHolidayController() {
 		List<Holiday> holidays = null;
 		try {
-			logger.info("Getting the categories data...");
+			logger.info("Getting the Holiday data...");
 			holidays = holidayService.getAllHolidays();
-			logger.info("categories data retrieval success.");
+			logger.info("Holiday data retrieval success.");
 		} catch (Exception e) {
 			logger.error(e.getMessage(), e);
 			throw new InternalException("System has some issue...", e);

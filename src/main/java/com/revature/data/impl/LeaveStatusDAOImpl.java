@@ -31,7 +31,7 @@ public class LeaveStatusDAOImpl {
 		List<LeaveStatus> leaveStatus = null;
 		try {
 			StringBuilder sb = new StringBuilder("select * from leave_status");
-			leaveStatus = dataRetriver.retrieveBySQL(sb.toString());
+			leaveStatus = dataRetriver.retrieveListBySQL(sb.toString());
 			logger.info("data retrieval success..");
 		} catch (DataAccessException e) {
 			logger.error(e.getMessage(), e);

@@ -4,20 +4,24 @@ import java.util.List;
 
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Primary;
 import org.springframework.stereotype.Repository;
-import org.springframework.transaction.annotation.Transactional;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.revature.data.access.DataRetriver;
 import com.revature.data.access.exception.DataAccessException;
 import com.revature.data.exception.DataServiceException;
-import com.revature.data.utils.DataUtils;
 import com.revature.model.Department;
-@Transactional
+
 @Repository
+@Primary
 public class DepartmentDAOImpl {
 	private static Logger logger = Logger.getLogger(UserDAOImpl.class);
+
 	@Autowired
 	private DataRetriver dataRetriver;
+
+	final ObjectMapper mapper = new ObjectMapper();
 
 	public DataRetriver getDataRetriver() {
 		return dataRetriver;
@@ -27,16 +31,32 @@ public class DepartmentDAOImpl {
 		this.dataRetriver = dataRetriver;
 	}
 
-	public List<Department> getAllDepartment() throws DataServiceException{
-		List<Department> departments = null;
+	public List<Department> getAllDepartment() throws DataServiceException {
+		StringBuilder stringBuilder = new StringBuilder("select * from departments");
+		List<Department> department = null;
 		try {
-			StringBuilder sb = new StringBuilder("select * from departments");
-			departments = dataRetriver.retrieveBySQL(sb.toString());
-			logger.info("Categories data retrieval success..");
+			department = dataRetriver.retrieveListBySQL(stringBuilder.toString());
 		} catch (DataAccessException e) {
-			logger.error(e.getMessage(), e);
-			throw new DataServiceException(DataUtils.getPropertyMessage("data_retrieval_fail"), e);
+			e.printStackTrace();
 		}
-		return departments;
+		logger.info("Department data retrieval success..");
+		return department;
+	}
+
+	public Department getDepartmentById(int id) throws DataServiceException {
+		StringBuilder stringBuilder = new StringBuilder("select * from departments where id=" + id);
+		Object department = null;
+		Department departmentModel = new Department();
+		try {
+			department = dataRetriver.retrieveOneBySQL(stringBuilder.toString());
+			System.out.println(department);
+			
+			departmentModel = mapper.convertValue(department, Department.class);
+			System.out.println(departmentModel);
+		} catch (DataAccessException e) {
+			e.printStackTrace();
+		}
+		logger.info("Department data retrieval success..");
+		return departmentModel;
 	}
 }

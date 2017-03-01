@@ -17,7 +17,7 @@ public class EmployeeServiceImpl {
 	@Autowired
 	private  EmployeeDAOImpl employeeDAO;
 	
-	public List<Employee> list() throws DataServiceException {
+	public List<Employee> getAllEmployee() throws DataServiceException {
 		List<Employee> employee=null;
 		employee=employeeDAO.getAllEmployees();
 		logger.info("retrived successfully");

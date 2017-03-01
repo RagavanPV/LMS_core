@@ -17,7 +17,7 @@ public class PolicyServiceImpl {
 	@Autowired
 	private  PolicyDAOImpl policyDAO;
 	
-	public List<Policy> list() throws DataServiceException {
+	public List<Policy> getAllPolicy() throws DataServiceException {
 		List<Policy> policy=null;
 		policy=policyDAO.getAllPolicy();
 		logger.info("retrived successfully");

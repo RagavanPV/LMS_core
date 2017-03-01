@@ -17,9 +17,15 @@ public class DepartmentServiceImpl {
 	@Autowired
 	private  DepartmentDAOImpl departmentDAO;
 	
-	public List<Department> list() throws DataServiceException {
+	public List<Department> getAllDepartment() throws DataServiceException {
 		List<Department> department=null;
 		department=departmentDAO.getAllDepartment();
+		logger.info("retrived successfully");
+		return department;
+	}
+	public Department getDepartmentById(int id) throws DataServiceException {
+		Department department=new Department();
+		department=departmentDAO.getDepartmentById(id);
 		logger.info("retrived successfully");
 		return department;
 	}

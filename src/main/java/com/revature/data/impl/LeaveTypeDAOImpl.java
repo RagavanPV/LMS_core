@@ -31,7 +31,7 @@ public class LeaveTypeDAOImpl {
 		List<LeaveType> leaveType = null;
 		try {
 			StringBuilder sb = new StringBuilder("select * from leave_type");
-			leaveType = dataRetriver.retrieveBySQL(sb.toString());
+			leaveType = dataRetriver.retrieveListBySQL(sb.toString());
 			logger.info("data retrieval success..");
 		} catch (DataAccessException e) {
 			logger.error(e.getMessage(), e);

@@ -31,7 +31,7 @@ public class PolicyDAOImpl {
 		List<Policy> policy = null;
 		try {
 			StringBuilder sb = new StringBuilder("select * from policies");
-			policy = dataRetriver.retrieveBySQL(sb.toString());
+			policy = dataRetriver.retrieveListBySQL(sb.toString());
 			logger.info("data retrieval success..");
 		} catch (DataAccessException e) {
 			logger.error(e.getMessage(), e);

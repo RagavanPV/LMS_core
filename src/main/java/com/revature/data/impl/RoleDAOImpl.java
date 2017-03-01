@@ -31,7 +31,7 @@ public class RoleDAOImpl {
 		List<Role> roles = null;
 		try {
 			StringBuilder sb = new StringBuilder("select * from roles");
-			roles = dataRetriver.retrieveBySQL(sb.toString());
+			roles = dataRetriver.retrieveListBySQL(sb.toString());
 			logger.info("data retrieval success..");
 		} catch (DataAccessException e) {
 			logger.error(e.getMessage(), e);

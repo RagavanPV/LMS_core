@@ -17,7 +17,7 @@ public class LeavePolicyServiceImpl {
 	@Autowired
 	private  LeavePolicyDAOImpl leavePolicyDAO;
 	
-	public List<LeavePolicy> list() throws DataServiceException {
+	public List<LeavePolicy> getAllLeavePolicy() throws DataServiceException {
 		List<LeavePolicy> leavePolicy=null;
 		leavePolicy=leavePolicyDAO.getAllLeavePolicy();
 		logger.info("retrived successfully");
