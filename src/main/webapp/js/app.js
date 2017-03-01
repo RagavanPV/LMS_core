@@ -1,9 +1,12 @@
-var storeApp = angular.module('lmsApp', ['ngRoute']).
+var storeApp = angular.module('lmsApp', ['ngRoute']);
+
+
+storeApp.
 config(['$routeProvider', function($routeProvider) {
     $routeProvider.
     when('/', {
         templateUrl: 'partials/login.html',
-        controller:""
+        controller: "LoginController"
     }).
     when('/holidays', {
         templateUrl: 'partials/holidays.html',

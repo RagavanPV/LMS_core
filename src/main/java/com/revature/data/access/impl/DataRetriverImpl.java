@@ -46,5 +46,4 @@ public class DataRetriverImpl implements DataRetriver {
 		return list;
 	}
 	
-
 }

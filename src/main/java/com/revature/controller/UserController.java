@@ -4,8 +4,11 @@ import java.util.List;
 
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.revature.biz.impl.UserServiceImpl;
@@ -22,12 +25,29 @@ public class UserController {
 	private UserServiceImpl user;
 
 	@GetMapping
-	public List<User> getAllUsersController() {
+	public ResponseEntity<List<User>> getAllUsersController() {
+		List<User> userList=null;
+		ResponseEntity<List<User>> entity=new ResponseEntity<>(null, HttpStatus.UNAUTHORIZED);
 		try {
-			return user.getAllUsers();
+			userList= user.getAllUsers();
+			entity=new ResponseEntity<>(userList, HttpStatus.OK);
 		} catch (DataServiceException e) {
 			e.printStackTrace();
 		}
-		return null;
+		return entity;
+		
+	}
+	@GetMapping("/GetUser")
+	public ResponseEntity<List<User>> getUserController(@RequestParam("emailId")String emailId,@RequestParam("password") String password) {
+		List<User> userList=null;
+		ResponseEntity<List<User>> entity=new ResponseEntity<>(null, HttpStatus.UNAUTHORIZED);
+		try {
+			userList= user.getUser(emailId,password);
+			entity=new ResponseEntity<>(userList, HttpStatus.OK);
+		} catch (DataServiceException e) {
+			e.printStackTrace();
+		}
+		return entity;
+		
 	}
 }

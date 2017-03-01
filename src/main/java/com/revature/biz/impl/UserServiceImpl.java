@@ -24,4 +24,10 @@ public class UserServiceImpl{
 		logger.info("retrived successfully");
 		return list;
 	}
+	public List<User> getUser(String emailId,String password) throws DataServiceException {
+		List<User> list=null;
+		list=userDAO.getUser(emailId,password);
+		logger.info("retrived successfully");
+		return list;
+	}
 }

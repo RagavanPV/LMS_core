@@ -30,7 +30,7 @@ public class UserDAOImpl{
 	
 	public List<User> getAllUser() throws DataServiceException{
 		
-		StringBuilder stringBuilder=new StringBuilder("select u.id userid,u.email_id useremail,e.name ename from users u join employees e on u.employee_id=e.id");
+		StringBuilder stringBuilder=new StringBuilder("select u.id userid,u.email_id useremail,e.name ename,e.role_id roleId from users u join employees e on u.employee_id=e.id");
 		List<User> users = null;
 		try {
 			users = dataRetriver.retrieveListBySQL(stringBuilder.toString());
@@ -46,6 +46,23 @@ public class UserDAOImpl{
 		
 	}
 	
+	public List<User> getUser(String emailId,String password) throws DataServiceException{
+		
+		StringBuilder stringBuilder=new StringBuilder("select u.id userid,u.email_id useremail from users u where email_id='"+emailId+"' and password='"+password+"'");
+		List<User> users = null;
+		try {
+			users = dataRetriver.retrieveListBySQL(stringBuilder.toString());
+		} catch (DataAccessException e) {
+			e.printStackTrace();
+		}
+		
 	
+		logger.info("Categories data retrieval success..");
+
+		return users;
+		
+		
+	}
 	
+
 }

@@ -15,5 +15,5 @@ public interface DataRetriver {
   public <E> List<E> retrieveListBySQL(String query) throws DataAccessException;
   
   public <E> Object retrieveOneBySQL(String query) throws DataAccessException;
-
+  
 }
