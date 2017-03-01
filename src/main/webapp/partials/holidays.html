@@ -1,0 +1,20 @@
+   <div ng-include="'layout/navbar.html'"></div>
+    <main class="container" style="padding-top: 100px;">
+        <div>
+            <h2>Holidays</h2>
+            <table class="table table-hover">
+                <thead class="thead-inverse">
+                    <th>Sno</th>
+                    <th>Holiday Name</th>
+                    <th>Date</th>
+                    <th>Day</th>
+                </thead>
+                <tr ng-repeat="holiday in holidays">
+                    <td>{{holiday.ID}}</td>
+                    <td>{{holiday.NAME}}</td>
+                    <td>{{holiday.HOLIDAY_DATE}}</td>
+					<td>{{holiday.DAY}}</td>
+                </tr>
+            </table>
+        </div>
+    </main>
