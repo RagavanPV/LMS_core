@@ -6,11 +6,9 @@
 	<form method="GET">
 		<h2 class="form-signin-heading">Apply Leave</h2>
 		<div class="form-group row">
-			<label for="exampleSelect1" class="col-2">Leave Type</label> <select
-				required name="type" class="form-control col-10" id="exampleSelect1">
-				<div ng-repeat="leavetype">
-					<option value={{leavetype.ID}}>{{leavetype.NAME}}</option>
-				</div>
+			<label for="exampleSelect1" class="col-2">Leave Type</label> 
+			<select	required name="type" ng-model="type" class="form-control col-10" id="exampleSelect1">
+				<option ng-repeat="leavetype in leavetypes" value={{leavetype.ID}}>{{leavetype.NAME}}</option>
 			</select>
 		</div>
 
@@ -19,25 +17,68 @@
 			<div id="session-select" class="col-10">
 				<div class="form-check">
 					<label class="form-check-label"> <input
-						class="form-check-input" required type="radio" name="days"
-						id="gridRadios1" value="1"> FullDay
+						class="form-check-input" required type="radio" ng-model="day"
+						name="days" id="gridRadios1" value="1"> FullDay
 					</label>
 				</div>
 				<div class="form-check">
 					<label class="form-check-label"> <input
-						class="form-check-input" required type="radio" name="days"
-						id="gridRadios2" value="2"> HalfDay
+						class="form-check-input" required type="radio" ng-model="day"
+						name="days" id="gridRadios2" value="2"> HalfDay
 					</label>
 				</div>
 			</div>
 		</div>
-		<div id="Days" class="desc"></div>
+
+		<div id="day1" class="desc" ng-show="day==1">
+			<div class='form-group row'>
+				<label for='example-date-input' class='col-2 col-form-label'>
+					From Date</label>
+				<div class='col-10'>
+					<input class='form-control' name='frm_date' ng-required="day==1" type='date'
+						ng-model='frm_date' id='date'>
+				</div>
+			</div>
+			<div class='form-group row'>
+				<label for='example-date-input' class='col-2 col-form-label'>
+					To Date </label>
+				<div class='col-10'>
+					<input class='form-control' name='to_date' ng-model='to_date'
+						ng-required="day==1" type='date' id='date'>
+				</div>
+			</div>
+		</div>
+		<div id="day2" class="desc" ng-show="day==2">
+			<div class='form-group row'>
+				<label for='example-date-input' class='col-2 col-form-label'>Date
+					of Leave</label>
+				<div class='col-10'>
+					<input class='form-control' name='date_of_leave' ng-required="day==2"
+						type='date' ng-model="date" id='example-date-input'>
+				</div>
+			</div>
+			<div class='form-group row'>
+				<label for='session-select' class='col-2 col-form-label'>Session</label>
+				<div id='session-select' class='col-10'>
+					<div class='form-check'>
+						<label class='form-check-label'><input
+							class='form-check-input' ng-required="day==2" ng-model="session" type='radio' name='fromFn'
+							id='gridRadios1' value='1'> FN</label>
+					</div>
+					<div class='form-check'>
+						<label class='form-check-label'><input
+							class='form-check-input' ng-required="day==2" type='radio' ng-model="session" name='FromFn'
+							id='gridRadios2' value='2'> AN</label>
+					</div>
+				</div>
+			</div>
+		</div>
 		<div class="form-group row">
 			<label for="exampleTextarea" class="col-2">Reason</label>
 			<textarea name="reason" required class="form-control col-10"
-				id="exampleTextarea" rows="3"></textarea>
+				id="exampleTextarea" rows="3" ng-model="reason"></textarea>
 		</div>
-		<input type="submit" value="Apply Leave"
+		<input type="submit" value="Apply Leave" ng-click="submit()"
 			class="btn btn-lg btn-primary">
 	</form>
 </div>

@@ -39,13 +39,13 @@ $(document).ready(function() {
                         </button>
                     </div>
                     <div class="modal-body">
-                        <form>
+                        <form ng-controller="LoginController">
                             <div class="input-group mb-2 mr-sm-2 mb-sm-0">
                                 <div class="input-group-addon">@</div>
-                                <input type="email" class="form-control" required id="email" placeholder="Email">
+                                <input type="email" class="form-control" required id="email" ng-model="email" placeholder="Email">
                             </div>
                             <br>
-                            <input class="btn btn-primary" type="submit" value="send mail">
+                            <input class="btn btn-primary" ng-click="forgot()" type="submit" value="send mail">
                         </form>
                     </div>
                 </div>

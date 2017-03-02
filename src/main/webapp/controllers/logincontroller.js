@@ -1,14 +1,13 @@
 storeApp.controller('LoginController', [ '$rootScope', '$scope','$http','$location', function($rootScope, $scope,$http,$location) {
-	
 	var userStr = localStorage.getItem("LOGGED_IN_USER");
 	
-	if (userStr == null ){
-		$location.path('/');
-	}
-	else
-		{
-			$scope.LOGGED_IN_USER= JSON.parse(userStr);  // Get logged in user details from localStorage and store in scope
-		}
+//	if (userStr == null) {
+//    $location.path('/');
+//} else {
+//    $scope.LOGGED_IN_USER = JSON.parse(userStr); // Get logged in user details from localStorage and store in scope
+//    $location.path('/userpage');
+//}
+
 	
     $scope.login = function() {
     	var url = 'user/GetUser?emailId='+$scope.email+'&password='+$scope.password ;
@@ -33,6 +32,10 @@ storeApp.controller('LoginController', [ '$rootScope', '$scope','$http','$locati
     	$rootScope.LOGGED_IN_USER=null;
     	localStorage.clear();
     	$location.path("/");
+    	
+    };
+    $scope.forgot = function() {
+    	console.log($scope.email);
     	
     };
 }]);

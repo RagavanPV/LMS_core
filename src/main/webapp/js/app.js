@@ -10,15 +10,17 @@ config(['$routeProvider', function($routeProvider) {
     }).
     when('/holidays', {
         templateUrl: 'partials/holidays.html',
-        controller:"HolidayController"
+        controller: "HolidayController"
     }).
     when('/applyleave', {
         templateUrl: 'partials/applyleave.html',
-        controller:"ApplyLeaveController"
+        controller: "ApplyLeaveController"
     }).
-    when('/myteam', {
-        templateUrl: 'partials/myteam.html',
-    }).when('/userpage', {
+    when('/updatepassword', {
+        templateUrl: 'partials/updatepassword.html',
+        controller: "RegistrationController"
+    }).
+    when('/userpage', {
         templateUrl: 'partials/userpage.html',
     }).
     otherwise({

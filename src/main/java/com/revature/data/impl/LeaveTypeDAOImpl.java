@@ -30,7 +30,7 @@ public class LeaveTypeDAOImpl {
 	public List<LeaveType> getAllLeaveTypes() throws DataServiceException{
 		List<LeaveType> leaveType = null;
 		try {
-			StringBuilder sb = new StringBuilder("select * from leave_type");
+			StringBuilder sb = new StringBuilder("select * from leave_types");
 			leaveType = dataRetriver.retrieveListBySQL(sb.toString());
 			logger.info("data retrieval success..");
 		} catch (DataAccessException e) {
