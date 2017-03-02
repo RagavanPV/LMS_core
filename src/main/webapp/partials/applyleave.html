@@ -1,55 +1,45 @@
-      <script type="text/javascript">
-    $(document).ready(function() {
-        $("input[name$='days']").click(function() {
-            var test = $(this).val();
-            var code;
-            $("#Days").empty();
-            if (test == 1) {
-                code = "<div class='form-group row'><label for='example-date-input' class='col-2 col-form-label'> From Date</label><div class='col-10'><input class='form-control' name='frm_date' required type='date' id='example-date-input'></div></div><div class='form-group row'><label for='example-date-input' class='col-2 col-form-label'> To Date </label><div class='col-10'><input class='form-control' name='to_date' required type='date' id='example-date-input'></div></div>";
-            } else {
-                code = "<div class='form-group row'><label for='example-date-input' class='col-2 col-form-label'>Date of Leave</label><div class='col-10'><input class='form-control' name='date_of_leave' required type='date' id='example-date-input'></div></div><div class='form-group row'><label for='session-select' class='col-2 col-form-label'>Session</label><div id='session-select' class='col-10'><div class='form-check'><label class='form-check-label'><input class='form-check-input' required type='radio' name='fromFn' id='gridRadios1' value='1'> FN</label></div><div class='form-check'><label class='form-check-label'><input class='form-check-input' required type='radio' name='FromFn' id='gridRadios2' value='2'> AN</label></div></div></div>";
-            }
-            $("#Days").html(code);
 
-        });
-    });
-    </script>
-    <main class="container">
-        <div class="container">
-            <form method="GET" action="index.html">
-                <h2 class="form-signin-heading">Apply Leave</h2>
-                <div class="form-group row">
-                    <label for="exampleSelect1" class="col-2">Leave Type</label>
-                    <select required name="type" class="form-control col-10" id="exampleSelect1">
-                        <option value="1">Paid Leave</option>
-                        <option value="2">Sick Leave</option>
-                        <option value="3">Casual Leave</option>
-                        <option value="4">Privileged Leave</option>
-                        <option value="5">Maternity Leave</option>
-                    </select>
-                </div>
-                <div class="form-group row">
-                    <label for="session-select" class="col-2 col-form-label">Days</label>
-                    <div id="session-select" class="col-10">
-                        <div class="form-check">
-                            <label class="form-check-label">
-                                <input class="form-check-input" required type="radio" name="days" id="gridRadios1" value="1"> FullDay
-                            </label>
-                        </div>
-                        <div class="form-check">
-                            <label class="form-check-label">
-                                <input class="form-check-input" required type="radio" name="days" id="gridRadios2" value="2"> HalfDay
-                            </label>
-                        </div>
-                    </div>
-                </div>
-                <div id="Days" class="desc">
-                </div>
-                <div class="form-group row">
-                    <label for="exampleTextarea" class="col-2">Reason</label>
-                    <textarea name="reason" required class="form-control col-10" id="exampleTextarea" rows="3"></textarea>
-                </div>
-                <input type="submit" value="Apply Leave" class="btn btn-lg btn-primary">
-            </form>
-        </div>
-    </main>
+<link rel="stylesheet" type="text/css" href="css/login.css">
+
+<main class="container" ng-controller="ApplyLeaveController">
+<div class="container">
+	<form method="GET">
+		<h2 class="form-signin-heading">Apply Leave</h2>
+		<div class="form-group row">
+			<label for="exampleSelect1" class="col-2">Leave Type</label> <select
+				required name="type" class="form-control col-10" id="exampleSelect1">
+				<div ng-repeat="leavetype">
+					<option value={{leavetype.ID}}>{{leavetype.NAME}}</option>
+				</div>
+			</select>
+		</div>
+
+		<div class="form-group row">
+			<label for="session-select" class="col-2 col-form-label">Days</label>
+			<div id="session-select" class="col-10">
+				<div class="form-check">
+					<label class="form-check-label"> <input
+						class="form-check-input" required type="radio" name="days"
+						id="gridRadios1" value="1"> FullDay
+					</label>
+				</div>
+				<div class="form-check">
+					<label class="form-check-label"> <input
+						class="form-check-input" required type="radio" name="days"
+						id="gridRadios2" value="2"> HalfDay
+					</label>
+				</div>
+			</div>
+		</div>
+		<div id="Days" class="desc"></div>
+		<div class="form-group row">
+			<label for="exampleTextarea" class="col-2">Reason</label>
+			<textarea name="reason" required class="form-control col-10"
+				id="exampleTextarea" rows="3"></textarea>
+		</div>
+		<input type="submit" value="Apply Leave"
+			class="btn btn-lg btn-primary">
+	</form>
+</div>
+
+</main>

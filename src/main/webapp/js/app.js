@@ -10,6 +10,11 @@ config(['$routeProvider', function($routeProvider) {
     }).
     when('/holidays', {
         templateUrl: 'partials/holidays.html',
+        controller:"HolidayController"
+    }).
+    when('/applyleave', {
+        templateUrl: 'partials/applyleave.html',
+        controller:"ApplyLeaveController"
     }).
     when('/myteam', {
         templateUrl: 'partials/myteam.html',
