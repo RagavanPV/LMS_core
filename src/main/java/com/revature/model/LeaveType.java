@@ -21,13 +21,15 @@ import javax.persistence.Table;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlTransient;
 
+import lombok.Data;
+
 /**
  *
  * @author Akshay
  */
 @Entity
 @Table(name = "leave_types")
-
+@Data
 public class LeaveType implements Serializable {
 
     private static final long serialVersionUID = 1L;

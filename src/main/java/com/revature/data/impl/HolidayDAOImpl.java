@@ -11,6 +11,7 @@ import com.revature.data.access.DataRetriver;
 import com.revature.data.access.exception.DataAccessException;
 import com.revature.data.exception.DataServiceException;
 import com.revature.data.utils.DataUtils;
+import com.revature.model.Department;
 import com.revature.model.Holiday;
 @Transactional
 @Repository
@@ -38,5 +39,17 @@ public class HolidayDAOImpl {
 			throw new DataServiceException(DataUtils.getPropertyMessage("data_retrieval_fail"), e);
 		}
 		return holidays;
+	}
+	public Integer addHoliday(Holiday holiday) throws DataServiceException {
+		StringBuilder stringBuilder = new StringBuilder("insert into holidays(NAME,HOLIDAY_DATE,HOLIDAY_YEAR) values('"+holiday.getName()+"','"+holiday.getHolidayDate()+"','"+holiday.getHolidayYear()+"')");
+		
+		Integer rows = null;
+		try {
+			rows = dataRetriver.add(stringBuilder.toString());
+		} catch (DataAccessException e) {
+			e.printStackTrace();
+		}
+		logger.info("Holiday data added");
+		return rows;
 	}
 }

@@ -11,6 +11,7 @@ import com.revature.data.access.DataRetriver;
 import com.revature.data.access.exception.DataAccessException;
 import com.revature.data.exception.DataServiceException;
 import com.revature.data.utils.DataUtils;
+import com.revature.model.Department;
 import com.revature.model.Employee;
 @Transactional
 @Repository
@@ -38,5 +39,17 @@ public class EmployeeDAOImpl {
 			throw new DataServiceException(DataUtils.getPropertyMessage("data_retrieval_fail"), e);
 		}
 		return employees;
+	}
+	public Integer addEmployee(Employee employee) throws DataServiceException {
+		StringBuilder stringBuilder = new StringBuilder("insert into employees(NAME,GENDER,ROLE_ID,MANAGER_ID,DEPARTMENT_ID,JOINING_DATE) values('"+employee.getEmployee()+"','"+employee.getGender()+"','"+employee.getRoleId().getId()+"','"+employee.getManagerId()+"','"+employee.getDepartmentId().getId()+"','"+employee.getJoining()+"')");
+		
+		Integer rows = null;
+		try {
+			rows = dataRetriver.add(stringBuilder.toString());
+		} catch (DataAccessException e) {
+			e.printStackTrace();
+		}
+		logger.info("Employee data added");
+		return rows;
 	}
 }

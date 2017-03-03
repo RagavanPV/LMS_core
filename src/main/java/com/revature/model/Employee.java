@@ -1,7 +1,7 @@
 package com.revature.model;
 
 import java.io.Serializable;
-import java.util.Date;
+import java.sql.Date;
 
 import javax.persistence.Basic;
 import javax.persistence.Column;
@@ -38,10 +38,8 @@ public class Employee implements Serializable {
 	private Integer managerId;
 	@Basic(optional = false)
 	@Column(name = "JOINING_DATE")
-	@Temporal(TemporalType.DATE)
 	private Date joining;
 	@Column(name = "RELEAVING_DATE")
-	@Temporal(TemporalType.DATE)
 	private Date releaving;
 	@Lob
 	@Column(name = "RELEAVING_REASON")

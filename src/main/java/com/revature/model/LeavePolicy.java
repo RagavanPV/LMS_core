@@ -17,13 +17,15 @@ import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 import javax.xml.bind.annotation.XmlRootElement;
 
+import lombok.Data;
+
 /**
  *
  * @author Akshay
  */
 @Entity
 @Table(name = "leave_policy")
-
+@Data
 public class LeavePolicy implements Serializable {
 
     private static final long serialVersionUID = 1L;

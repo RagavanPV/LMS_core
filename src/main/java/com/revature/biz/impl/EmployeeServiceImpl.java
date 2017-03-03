@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 
 import com.revature.data.exception.DataServiceException;
 import com.revature.data.impl.EmployeeDAOImpl;
+import com.revature.model.Department;
 import com.revature.model.Employee;
 
 @Service
@@ -22,5 +23,10 @@ public class EmployeeServiceImpl {
 		employee=employeeDAO.getAllEmployees();
 		logger.info("retrived successfully");
 		return employee;
+	}
+	public Integer addEmployee(Employee employee) throws DataServiceException {
+		int rows=employeeDAO.addEmployee(employee);
+		logger.info("Added Employee");
+		return rows;
 	}
 }

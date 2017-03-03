@@ -11,6 +11,7 @@ import com.revature.data.access.DataRetriver;
 import com.revature.data.access.exception.DataAccessException;
 import com.revature.data.exception.DataServiceException;
 import com.revature.data.utils.DataUtils;
+import com.revature.model.Department;
 import com.revature.model.Role;
 @Transactional
 @Repository
@@ -38,5 +39,17 @@ public class RoleDAOImpl {
 			throw new DataServiceException(DataUtils.getPropertyMessage("data_retrieval_fail"), e);
 		}
 		return roles;
+	}
+	public Integer addRole(Role role) throws DataServiceException {
+		StringBuilder stringBuilder = new StringBuilder("insert into roles(CODE,NAME,LEVEL) values('"+role.getCode()+"','"+role.getRole()+"','"+role.getLevel()+"')");
+		
+		Integer rows = null;
+		try {
+			rows = dataRetriver.add(stringBuilder.toString());
+		} catch (DataAccessException e) {
+			e.printStackTrace();
+		}
+		logger.info("Department data retrieval success..");
+		return rows;
 	}
 }

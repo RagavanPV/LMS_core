@@ -8,6 +8,7 @@ import org.springframework.context.annotation.Primary;
 import org.springframework.stereotype.Repository;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.google.gson.JsonArray;
 import com.revature.data.access.DataRetriver;
 import com.revature.data.access.exception.DataAccessException;
 import com.revature.data.exception.DataServiceException;
@@ -59,4 +60,29 @@ public class DepartmentDAOImpl {
 		logger.info("Department data retrieval success..");
 		return departmentModel;
 	}
+	public Integer addDepartment(Department department) throws DataServiceException {
+		StringBuilder stringBuilder = new StringBuilder("insert into departments(CODE,NAME) values('"+department.getCode()+"','"+department.getName()+"')");
+		
+		Integer rows = null;
+		try {
+			rows = dataRetriver.add(stringBuilder.toString());
+		} catch (DataAccessException e) {
+			e.printStackTrace();
+		}
+		logger.info("Department data added");
+		return rows;
+	}
+	public String callProcedure(Department department) throws DataServiceException {
+		StringBuilder stringBuilder = new StringBuilder("PR_TEST");
+		
+		String rows = null;
+		try {
+			rows = dataRetriver.callProcedure(stringBuilder.toString(),department);
+		} catch (DataAccessException e) {
+			e.printStackTrace();
+		}
+		logger.info("Department data added");
+		return rows;
+	}
+	
 }

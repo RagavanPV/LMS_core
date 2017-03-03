@@ -12,6 +12,7 @@ import com.revature.data.access.exception.DataAccessException;
 import com.revature.data.exception.DataServiceException;
 import com.revature.data.utils.DataUtils;
 import com.revature.model.Policy;
+import com.revature.model.Role;
 @Transactional
 @Repository
 public class PolicyDAOImpl {
@@ -39,4 +40,17 @@ public class PolicyDAOImpl {
 		}
 		return policy;
 	}
+	public Integer addPolicy(Policy policy) throws DataServiceException {
+		StringBuilder stringBuilder = new StringBuilder("insert into policies(NAME,POLICY_YEAR) values('"+policy.getName()+"','"+policy.getPolicyYear()+"')");
+		
+		Integer rows = null;
+		try {
+			rows = dataRetriver.add(stringBuilder.toString());
+		} catch (DataAccessException e) {
+			e.printStackTrace();
+		}
+		logger.info("Department data retrieval success..");
+		return rows;
+	}
+	
 }

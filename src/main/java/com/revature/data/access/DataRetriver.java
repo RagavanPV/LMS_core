@@ -2,7 +2,9 @@ package com.revature.data.access;
 
 import java.util.List;
 
+import com.google.gson.JsonArray;
 import com.revature.data.access.exception.DataAccessException;
+import com.revature.model.Department;
 
 public interface DataRetriver {
   /**
@@ -16,4 +18,10 @@ public interface DataRetriver {
   
   public <E> Object retrieveOneBySQL(String query) throws DataAccessException;
   
+  public <E> Integer add(String queryString) throws DataAccessException;
+  
+  public <E> String callProcedure(String queryString,Department d) throws DataAccessException;
+  
+  public <E> Integer update(String queryString) throws DataAccessException;
+
 }

@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 
 import com.revature.data.exception.DataServiceException;
 import com.revature.data.impl.PolicyDAOImpl;
+import com.revature.model.Department;
 import com.revature.model.Policy;
 
 @Service
@@ -22,5 +23,10 @@ public class PolicyServiceImpl {
 		policy=policyDAO.getAllPolicy();
 		logger.info("retrived successfully");
 		return policy;
+	}
+	public Integer addPolicy(Policy policy) throws DataServiceException {
+		int rows=policyDAO.addPolicy(policy);
+		logger.info("Added department");
+		return rows;
 	}
 }

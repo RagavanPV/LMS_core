@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 
 import com.revature.data.exception.DataServiceException;
 import com.revature.data.impl.HolidayDAOImpl;
+import com.revature.model.Department;
 import com.revature.model.Holiday;
 
 @Service
@@ -22,5 +23,10 @@ public class HolidayServiceImpl {
 		holiday=holidayDAO.getAllHolidays();
 		logger.info("retrived successfully");
 		return holiday;
+	}
+	public Integer addHoliday(Holiday holiday) throws DataServiceException {
+		int rows=holidayDAO.addHoliday(holiday);
+		logger.info("Added department");
+		return rows;
 	}
 }

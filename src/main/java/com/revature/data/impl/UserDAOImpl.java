@@ -48,7 +48,7 @@ public class UserDAOImpl{
 	
 	public List<User> getUser(String emailId,String password) throws DataServiceException{
 		
-		StringBuilder stringBuilder=new StringBuilder("select u.id userid,u.email_id useremail from users u where email_id='"+emailId+"' and password='"+password+"'");
+		StringBuilder stringBuilder=new StringBuilder("select u.id userid,u.email_id useremail from users u where email_id='"+emailId+"' and user_password='"+password+"'");
 		List<User> users = null;
 		try {
 			users = dataRetriver.retrieveListBySQL(stringBuilder.toString());
@@ -62,6 +62,19 @@ public class UserDAOImpl{
 		return users;
 		
 		
+	}
+	
+	public Integer updatePassword(User user) throws DataServiceException
+	{
+		StringBuilder sb = new StringBuilder("update users u set u.password='"+user.getPassword()+"' where u.email_id='"+user.getEmailId()+"'");
+        Integer rows=null;
+        try {
+			rows=dataRetriver.update(sb.toString());
+		} catch (DataAccessException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return rows;
 	}
 	
 

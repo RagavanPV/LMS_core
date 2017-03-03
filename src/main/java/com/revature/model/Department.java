@@ -23,14 +23,12 @@ public class Department implements Serializable{
     @Basic(optional = false)
     @Column(name = "ID")
     private Integer id;
-    @Basic(optional = false)
     @Column(name = "CODE")
     private String code;
-    @Basic(optional = false)
     @Column(name = "NAME")
-    private String department;
+    private String name;
   
-
+    private String errmsg;
     public Department() {
     }
 }

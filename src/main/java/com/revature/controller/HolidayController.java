@@ -5,11 +5,15 @@ import java.util.List;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.revature.biz.impl.HolidayServiceImpl;
 import com.revature.controller.exception.InternalException;
+import com.revature.data.exception.DataServiceException;
+import com.revature.model.Department;
 import com.revature.model.Holiday;
 
 @RestController
@@ -33,6 +37,19 @@ public class HolidayController {
 			throw new InternalException("System has some issue...", e);
 		}
 		return holidays;
+	}
+	@PostMapping("/add")
+	public Integer addDepartment(@RequestBody Holiday h){
+		try {
+			Holiday holiday=new Holiday();
+			holiday.setName(h.getName());
+			holiday.setHolidayDate(h.getHolidayDate());
+			holiday.setHolidayYear(h.getHolidayYear());
+			return holidayService.addHoliday(holiday);
+		} catch (DataServiceException e) {
+			e.printStackTrace();
+		}
+		return null;
 	}
 
 }

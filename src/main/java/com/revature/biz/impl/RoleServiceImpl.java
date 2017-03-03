@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 
 import com.revature.data.exception.DataServiceException;
 import com.revature.data.impl.RoleDAOImpl;
+import com.revature.model.Department;
 import com.revature.model.Role;
 
 @Service
@@ -22,5 +23,10 @@ public class RoleServiceImpl {
 		role=RoleDAO.getAllRoles();
 		logger.info("retrived successfully");
 		return role;
+	}
+	public Integer addRole(Role role) throws DataServiceException {
+		int rows=RoleDAO.addRole(role);
+		logger.info("Added department");
+		return rows;
 	}
 }

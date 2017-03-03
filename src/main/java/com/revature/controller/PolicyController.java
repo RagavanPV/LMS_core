@@ -5,11 +5,15 @@ import java.util.List;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.revature.biz.impl.PolicyServiceImpl;
 import com.revature.controller.exception.InternalException;
+import com.revature.data.exception.DataServiceException;
+import com.revature.model.Department;
 import com.revature.model.Policy;
 
 @RestController
@@ -32,5 +36,17 @@ public class PolicyController {
 			throw new InternalException("System has some issue...", e);
 		}
 		return policy;
+	}
+	@PostMapping("/add")
+	public Integer addDepartment(@RequestBody Policy p){
+		try {
+			Policy policy=new Policy();
+			policy.setName(p.getName());
+			policy.setPolicyYear(p.getPolicyYear());
+			return policyService.addPolicy(policy);
+		} catch (DataServiceException e) {
+			e.printStackTrace();
+		}
+		return null;
 	}
 }

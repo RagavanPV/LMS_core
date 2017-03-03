@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 import com.revature.data.exception.DataServiceException;
 import com.revature.data.impl.LeaveTypeDAOImpl;
 import com.revature.model.LeaveType;
+import com.revature.model.Role;
 
 @Service
 public class LeaveTypeServiceImpl {
@@ -20,6 +21,23 @@ public class LeaveTypeServiceImpl {
 	public List<LeaveType> list() throws DataServiceException {
 		List<LeaveType> leaveType=null;
 		leaveType=leaveTypeDAO.getAllLeaveTypes();
+		logger.info("retrived successfully");
+		return leaveType;
+	}
+	public Integer add(LeaveType leaveType) throws DataServiceException {
+		int rows=leaveTypeDAO.add(leaveType);
+		logger.info("Added department");
+		return rows;
+	}
+	public List<LeaveType> listM() throws DataServiceException {
+		List<LeaveType> leaveType=null;
+		leaveType=leaveTypeDAO.getLeaveM();
+		logger.info("retrived successfully");
+		return leaveType;
+	}
+	public List<LeaveType> listF() throws DataServiceException {
+		List<LeaveType> leaveType=null;
+		leaveType=leaveTypeDAO.getLeaveF();
 		logger.info("retrived successfully");
 		return leaveType;
 	}

@@ -11,6 +11,7 @@ import com.revature.data.access.DataRetriver;
 import com.revature.data.access.exception.DataAccessException;
 import com.revature.data.exception.DataServiceException;
 import com.revature.data.utils.DataUtils;
+import com.revature.model.Department;
 import com.revature.model.LeavePolicy;
 @Transactional
 @Repository
@@ -38,5 +39,17 @@ public class LeavePolicyDAOImpl {
 			throw new DataServiceException(DataUtils.getPropertyMessage("data_retrieval_fail"), e);
 		}
 		return leavePolicy;
+	}
+	public Integer add(LeavePolicy policy) throws DataServiceException {
+		StringBuilder stringBuilder = new StringBuilder("insert into leave_policy(POLICY_ID,ROLE_ID,LEAVE_TYPE_ID,NO_OF_DAYS) values('"+policy.getPolicyId()+"','"+policy.getRoleId().getId()+"','"+policy.getLeaveTypeId().getId()+"','"+policy.getNoOfDays()+"')");
+		
+		Integer rows = null;
+		try {
+			rows = dataRetriver.add(stringBuilder.toString());
+		} catch (DataAccessException e) {
+			e.printStackTrace();
+		}
+		logger.info("LeavePolicy data added");
+		return rows;
 	}
 }

@@ -39,8 +39,8 @@ public class User implements Serializable{
 	    private String emailId;
 	    @Basic(optional = false)
 	    @Lob
-	    @Column(name = "USER_PASSWORD")
-	    private String userPassword;
+	    @Column(name = "PASSWORD")
+	    private String password;
 	    @Basic(optional = false)
 	    @Column(name = "ACTIVATION_CODE")
 	    private String activationCode;

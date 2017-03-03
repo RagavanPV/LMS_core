@@ -6,6 +6,7 @@
 package com.revature.model;
 
 import java.io.Serializable;
+import java.time.Year;
 import java.util.Collection;
 import java.util.Date;
 import javax.persistence.Basic;
@@ -21,8 +22,8 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
-import javax.xml.bind.annotation.XmlRootElement;
-import javax.xml.bind.annotation.XmlTransient;
+
+import lombok.Data;
 
 /**
  *
@@ -30,7 +31,7 @@ import javax.xml.bind.annotation.XmlTransient;
  */
 @Entity
 @Table(name = "policies")
-
+@Data
 public class Policy implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -44,8 +45,7 @@ public class Policy implements Serializable {
     private String name;
     @Basic(optional = false)
     @Column(name = "POLICY_YEAR")
-    @Temporal(TemporalType.DATE)
-    private Date policyYear;
+    private Year policyYear;
    
 
     public Policy() {

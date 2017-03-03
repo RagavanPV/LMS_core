@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 
 import com.revature.data.exception.DataServiceException;
 import com.revature.data.impl.UserDAOImpl;
+import com.revature.model.Department;
 import com.revature.model.User;
 
 @Service
@@ -29,5 +30,11 @@ public class UserServiceImpl{
 		list=userDAO.getUser(emailId,password);
 		logger.info("retrived successfully");
 		return list;
+	}
+	
+	public Integer updatePassword(User user) throws DataServiceException {
+		int rows=userDAO.updatePassword(user);
+		logger.info("password updated");
+		return rows;
 	}
 }
