@@ -65,7 +65,35 @@ public class DataRetriverImpl implements DataRetriver {
 		return result;
 	
 	}
-	
+	public String cancelLeave(String string, Integer id) throws DataAccessException
+	{
+		String errmsg = null;
+
+		try {
+
+			sessionFactory.getCurrentSession();
+			StoredProcedureQuery q = entityManager.createStoredProcedureQuery(string)
+					.registerStoredProcedureParameter("i_id", Integer.class, ParameterMode.IN)
+					.setParameter("i_id", id)
+					.registerStoredProcedureParameter("result", String.class, ParameterMode.OUT);
+
+			q.execute();
+
+			errmsg = (String) q.getOutputParameterValue("result");
+		
+		logger.info("data retrieval success..");
+
+	} catch (Exception e) {
+
+		logger.error(e.getMessage(), e);
+
+		throw new DataAccessException(e.getMessage(), e);
+
+	}
+
+	return errmsg;
+
+	}
 	public <E> String fullDayLeave(String query,FullDayLeaveDTO leave)
 			throws DataAccessException {
 

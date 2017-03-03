@@ -1,7 +1,5 @@
 package com.revature.data.impl;
 
-import java.sql.Date;
-
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -46,4 +44,14 @@ public class ApplyLeaveImpl {
 		logger.info("Success");
 		return result;
 	}
+
+	public String cancelLeaves(Integer id) throws DataAccessException {
+		StringBuilder stringBuilder = new StringBuilder("PR_CANCEL_LEAVE");
+		String result;
+		result =  dataRetriver.cancelLeave(stringBuilder.toString(),id);
+		logger.info("Success");
+		return result;
+	}
+
+	
 }

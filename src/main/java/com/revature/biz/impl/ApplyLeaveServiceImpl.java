@@ -33,4 +33,11 @@ public class ApplyLeaveServiceImpl {
 		logger.info("retrived successfully");
 		return result;
 	}
+
+	public String cancelLeave(Integer id) throws DataAccessException {
+		String result;
+		result=applyLeav.cancelLeaves(id);
+		logger.info("retrived successfully");
+		return result;
+	}
 }

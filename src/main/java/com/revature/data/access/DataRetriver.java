@@ -27,4 +27,6 @@ public <E> String fullDayLeave(String string,FullDayLeaveDTO leav) throws DataAc
 public <E> String halfDayLeave(String string,HalfDayLeaveDTO leav)
 		throws DataAccessException;
 
+public String cancelLeave(String string, Integer id) throws DataAccessException;
+
 }

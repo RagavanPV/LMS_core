@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.revature.biz.impl.ApplyLeaveServiceImpl;
@@ -68,7 +69,24 @@ public class LeaveController {
 			String jsonResult=jsonObject.toString();
 			return jsonResult;
 		} catch (DataAccessException e) {
-			// TODO Auto-generated catch block
+
+			e.printStackTrace();
+		}
+		return null;
+		
+	}
+	@PostMapping("/cancelLeave")
+	public String cancel(@RequestParam("id") Integer id){
+		String result;
+		try {
+			
+			result=applyLeav.cancelLeave(id);
+			JSONObject jsonObject=new JSONObject();
+			jsonObject.put("ERRMSG", result);
+			String jsonResult=jsonObject.toString();
+			return jsonResult;
+		} catch (DataAccessException e) {
+
 			e.printStackTrace();
 		}
 		return null;
