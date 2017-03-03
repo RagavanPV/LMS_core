@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 
 import com.revature.data.exception.DataServiceException;
 import com.revature.data.impl.LeaveDetailsDAOImpl;
+import com.revature.model.Employee;
 import com.revature.model.LeaveDetail;
 @Service
 public class LeaveDetailsServiceImpl {
@@ -27,5 +28,10 @@ public class LeaveDetailsServiceImpl {
         leaveDetails=daoImpl.getLeaveByEmployeeId(l);
         logger.info("retrived successfully");
         return leaveDetails;
+    }
+    public List<LeaveDetail> getEmpLeaveListByManagerId(Integer managerId) throws DataServiceException {
+        List<LeaveDetail> leaveDetail=daoImpl.getEmpLeaveByManagerId(managerId);
+        logger.info("retrived successfully");
+        return leaveDetail;
     }
 }

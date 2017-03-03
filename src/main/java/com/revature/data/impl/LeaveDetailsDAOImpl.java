@@ -11,6 +11,8 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.revature.data.access.DataRetriver;
 import com.revature.data.access.exception.DataAccessException;
 import com.revature.data.exception.DataServiceException;
+import com.revature.data.utils.DataUtils;
+import com.revature.model.Employee;
 import com.revature.model.LeaveDetail;
 
 @Repository
@@ -51,4 +53,16 @@ public class LeaveDetailsDAOImpl {
 			        logger.info("Department data retrieval success..");
 			        return leaveDetails;
 			    }
+			    public List<LeaveDetail> getEmpLeaveByManagerId(Integer managerId) throws DataServiceException{
+			        List<LeaveDetail> leaveDetails = null;
+			        try {
+			            StringBuilder sb = new StringBuilder("SELECT e.NAME AS EMP_NAME,r.NAME AS ROLE_NAME,e.GENDER,lt.NAME TYPE_NAME,MIN(DATE_OF_LEAVE) AS FROM_DATE,MAX(DATE_OF_LEAVE) AS TO_DATE,DATE(APPLIED_DATE) AS APPLIED_DATE,ld.REASON FROM `leave_details` ld JOIN employees e ON ld.`EMPLOYEE_ID`=e.`ID` JOIN leave_types lt ON lt.`ID`=ld.leave_type_id JOIN roles r ON r.`ID`=e.`ROLE_ID` WHERE STATUS=1 AND e.manager_id="+managerId+" GROUP BY APPLIED_DATE");
+			            leaveDetails = dataRetriver.retrieveListBySQL(sb.toString());
+			            logger.info("Categories data retrieval success..");
+			        } catch (DataAccessException e) {
+			            logger.error(e.getMessage(), e);
+			            throw new DataServiceException(DataUtils.getPropertyMessage("data_retrieval_fail"), e);
+			        }
+			        return leaveDetails;
+			}
 }

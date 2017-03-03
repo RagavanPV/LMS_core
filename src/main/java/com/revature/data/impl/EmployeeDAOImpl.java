@@ -39,4 +39,17 @@ public class EmployeeDAOImpl {
 		}
 		return employees;
 	}
+	public List<Employee> getEmpByManagerId(Integer managerId) throws DataServiceException{
+        List<Employee> employees = null;
+        try {
+            StringBuilder sb = new StringBuilder("SELECT EMPLOYEES.ID,EMPLOYEES.NAME EMP_NAME ,ROLES.NAME ROLE,DEPARTMENTS.NAME DEPT_NAME FROM EMPLOYEES JOIN DEPARTMENTS JOIN ROLES "
++"ON EMPLOYEES.ROLE_ID=ROLES.ID AND EMPLOYEES.DEPARTMENT_ID=DEPARTMENTS.ID WHERE EMPLOYEES.MANAGER_ID='"+managerId+"'");
+            employees = dataRetriver.retrieveListBySQL(sb.toString());
+            logger.info("Categories data retrieval success..");
+        } catch (DataAccessException e) {
+            logger.error(e.getMessage(), e);
+            throw new DataServiceException(DataUtils.getPropertyMessage("data_retrieval_fail"), e);
+        }
+        return employees;
+}
 }

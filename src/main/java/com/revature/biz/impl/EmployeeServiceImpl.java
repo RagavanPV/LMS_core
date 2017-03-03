@@ -23,4 +23,9 @@ public class EmployeeServiceImpl {
 		logger.info("retrived successfully");
 		return employee;
 	}
+	public List<Employee> getEmpListByManagerId(Integer managerId) throws DataServiceException {
+        List<Employee> employee=employeeDAO.getEmpByManagerId(managerId);
+        logger.info("retrived successfully");
+        return employee;
+    }
 }

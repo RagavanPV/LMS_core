@@ -1,4 +1,4 @@
-    <main class="container" style="padding-top: 100px;">
+    <main class="container" style="padding-top: 100px;" ng-controller="LeaveController" ng-init="getempleavebymanagerid(LOGGED_IN_USER.userid)">
         <div>
             <h2>My Team</h2>
             <table class="table table-hover">
@@ -13,24 +13,16 @@
                     <th>Approve</th>
                     <th>Reject</th>
                 </thead>
-                <tr>
-                    <td>1</td>
-                    <td>Ragavan</td>
-                    <td>Software Engineer</td>
-                    <td>Monday</td>
-
-                </tr>
-                <tr>
-                    <td>2</td>
-                    <td>Diwali</td>
-                    <td>12/03/2017</td>
-                    <td>Tuesday</td>
-                </tr>
-                <tr>
-                    <td>3</td>
-                    <td>Christmas</td>
-                    <td>12/12/2017</td>
-                    <td>Saturday</td>
+                 <tr ng-repeat="leavedetail in leavedetails">
+                  	<td>{{index+1}}</td>
+                    <td>{{leavedetail.EMP_NAME}}</td>
+                    <td>{{leavedetail.ROLE_NAME}}</td>
+                    <td>{{leavedetail.APPLIED_DATE}}</td>
+                    <td>{{leavedetail.FROM_DATE}}</td>
+					<td>{{leavedetail.TO_DATE}}</td>
+					<td>{{leavedetail.REASON}}</td>
+					<td> <button type="button"  class="btn btn-success">Approve Leave</button></td>
+					<td><button type="button"  class="btn btn-danger">Reject Leave</button></td>
                 </tr>
             </table>
         </div>

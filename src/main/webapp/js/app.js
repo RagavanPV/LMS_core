@@ -23,6 +23,10 @@ config(['$routeProvider', function($routeProvider) {
         templateUrl: 'partials/userpage.html',
         controller:"UserController"
     }).
+    when('/myteam', {
+        templateUrl: 'partials/myteam.html',
+        controller:"LeaveController"
+    }).
     otherwise({
         redirectTo: '/'
     });

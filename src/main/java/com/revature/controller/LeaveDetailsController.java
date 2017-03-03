@@ -45,5 +45,15 @@ public class LeaveDetailsController {
         }
         return null;
     }
+    @GetMapping("/myteam")
+    public List<LeaveDetail> getEmpByManagerIdController(@RequestParam("userid") int managerId) {
+        try {
+            logger.info("Getting the Employee data...");
+            return leaveDetailsServiceImpl.getEmpLeaveListByManagerId(managerId);
+                    } catch (DataServiceException e) {
+            e.printStackTrace();
+        }
+        return null;
+}
 
 }
