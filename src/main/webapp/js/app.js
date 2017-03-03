@@ -18,10 +18,10 @@ config(['$routeProvider', function($routeProvider) {
     }).
     when('/updatepassword', {
         templateUrl: 'partials/updatepassword.html',
-        controller: "RegistrationController"
     }).
     when('/userpage', {
         templateUrl: 'partials/userpage.html',
+        controller:"UserController"
     }).
     otherwise({
         redirectTo: '/'

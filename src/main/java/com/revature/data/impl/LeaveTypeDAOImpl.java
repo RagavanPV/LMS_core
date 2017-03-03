@@ -27,10 +27,15 @@ public class LeaveTypeDAOImpl {
 		this.dataRetriver = dataRetriver;
 	}
 
-	public List<LeaveType> getAllLeaveTypes() throws DataServiceException{
+	public List<LeaveType> getAllLeaveTypes(String gender) throws DataServiceException{
 		List<LeaveType> leaveType = null;
+		StringBuilder sb;
 		try {
-			StringBuilder sb = new StringBuilder("select * from leave_types");
+			if(gender.equals("M")){
+			sb = new StringBuilder("SELECT * FROM leave_types WHERE NAME!='Maternity Leave'");}
+			else{
+			sb = new StringBuilder("SELECT * FROM leave_types WHERE NAME!='Paternity Leave'");
+			}
 			leaveType = dataRetriver.retrieveListBySQL(sb.toString());
 			logger.info("data retrieval success..");
 		} catch (DataAccessException e) {

@@ -1,4 +1,4 @@
-    <main class="container" style="padding-top: 100px;">
+    <main class="container" style="padding-top: 100px;" ng-controller="UserController" ng-init="home()">
         <div>
             <h2>Leave history</h2>
             <table class="table table-hover">
@@ -7,42 +7,23 @@
                     <th>Date applied</th>
                     <th>From Date</th>
                     <th>To Date</th>
+                    <th>Leave Type</th>
                     <th>Reason</th>
                     <th>Status</th>
                     <th>Cancel</th>
                     <th>Denied Reason</th>
                 </thead>
-                <tr>
-                    <td>1</td>
-                    <td>10/03/2017</td>
-                    <td>12/03/2017</td>
-                    <td>13/03/2017</td>
-                    <td>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</td>
-                    <td>Applied</td>
-                    <td>
-                        <button type="button" class="btn btn-danger">Cancel Leave</button>
-                    </td>
+                  <tr ng-repeat="leavedetail in leavedetails">
+                  	<td>{{index+1}}</td>
+                    <td>{{leavedetail.DATEAPPLIED}}</td>
+                    <td>{{leavedetail.FROMDATE}}</td>
+                    <td>{{leavedetail.TODATE}}</td>
+                    <td>{{leavedetail.LEAVE_NAME}}</td>
+					<td>{{leavedetail.REASON}}</td>
+					<td>{{leavedetail.STATUS}}</td>
+					<td> <button type="button"  class="btn btn-danger">Cancel Leave</button></td>
+					<td>{{leavedetail.DENIED_REASON}}</td>
                 </tr>
-                <tr>
-                    <td>2</td>
-                    <td>15/03/2017</td>
-                    <td>17/03/2017</td>
-                    <td>18/03/2017</td>
-                    <td>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</td>
-                    <td>Applied</td>
-                    <td>
-                        <button type="button" class="btn btn-danger">Cancel Leave</button>
-                    </td>
-                </tr>
-                <tr>
-                    <td>3</td>
-                    <td>20/03/2017</td>
-                    <td>21/03/2017</td>
-                    <td>22/03/2017</td>
-                    <td>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</td>
-                    <td>Applied</td>
-                    <td></td>
-                </tr>
-            </table>
+                </table>
         </div>
     </main>

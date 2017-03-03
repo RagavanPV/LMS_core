@@ -6,6 +6,7 @@ import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.revature.biz.impl.LeaveTypeServiceImpl;
@@ -19,9 +20,10 @@ public class LeaveTypeController {
   @Autowired
     private LeaveTypeServiceImpl leaveType;
   @GetMapping("/")
-    public List<LeaveType> getAllDepartment(){
+    public List<LeaveType> getAllDepartment(@RequestParam("gender") String gender){
         try {
-            return leaveType.list();
+        	System.out.println(gender);
+            return leaveType.list(gender);
         } catch (DataServiceException e) {
             e.printStackTrace();
         }

@@ -30,4 +30,9 @@ public class UserServiceImpl{
 		logger.info("retrived successfully");
 		return list;
 	}
+	public Integer updatePassword(User user) throws DataServiceException {
+		int rows=userDAO.updatePassword(user);
+		logger.info("password updated");
+		return rows;
+	}
 }

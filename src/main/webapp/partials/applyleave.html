@@ -63,12 +63,12 @@
 					<div class='form-check'>
 						<label class='form-check-label'><input
 							class='form-check-input' ng-required="day==2" ng-model="session" type='radio' name='fromFn'
-							id='gridRadios1' value='1'> FN</label>
+							id='gridRadios1' value='F'> FN</label>
 					</div>
 					<div class='form-check'>
 						<label class='form-check-label'><input
 							class='form-check-input' ng-required="day==2" type='radio' ng-model="session" name='FromFn'
-							id='gridRadios2' value='2'> AN</label>
+							id='gridRadios2' value='A'> AN</label>
 					</div>
 				</div>
 			</div>
@@ -80,6 +80,7 @@
 		</div>
 		<input type="submit" value="Apply Leave" ng-click="submit()"
 			class="btn btn-lg btn-primary">
+			{{errMsg}}
 	</form>
 </div>
 

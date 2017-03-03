@@ -17,9 +17,9 @@ public class LeaveTypeServiceImpl {
 	@Autowired
 	private  LeaveTypeDAOImpl leaveTypeDAO;
 	
-	public List<LeaveType> list() throws DataServiceException {
+	public List<LeaveType> list(String gender) throws DataServiceException {
 		List<LeaveType> leaveType=null;
-		leaveType=leaveTypeDAO.getAllLeaveTypes();
+		leaveType=leaveTypeDAO.getAllLeaveTypes(gender);
 		logger.info("retrived successfully");
 		return leaveType;
 	}
