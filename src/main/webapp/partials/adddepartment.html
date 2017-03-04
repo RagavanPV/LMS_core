@@ -1,0 +1,33 @@
+<main class="container" style="padding-top: 100px;"
+	ng-controller="DepartmentController">
+<div>
+	 <form>
+            <h2>Add Department</h2>
+            <div class="input-group mb-2 mr-sm-2 mb-sm-0">
+                <input type="text" name="code" class="form-control" required id="code" placeholder="Code">
+            </div>
+            <br>
+            <div class="input-group mb-2 mr-sm-2 mb-sm-0">
+                <input type="text" name="name" class="form-control" required id="name" placeholder="Name">
+            </div>
+            <br>
+            <input type="submit"  value="Add Department" class="btn btn-lg btn-primary btn-block">
+        </form>
+	<h2>Update Department</h2>
+	<table class="table table-hover">
+		<thead class="thead-inverse">
+			<th>Sno</th>
+			<th>Code</th>
+			<th>Name</th>
+			<th>Update Department</th>
+		</thead>
+		<tr ng-repeat="department in departments">
+			<td>{{index+1}}</td>
+			<td>{{department.CODE}}</td>
+			<td>{{department.NAME}}</td>
+			<td><button type="button" class="btn btn-success">Update
+					Department</button></td>
+		</tr>
+	</table>
+</div>
+</main>

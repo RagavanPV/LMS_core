@@ -21,15 +21,26 @@ config(['$routeProvider', function($routeProvider) {
     }).
     when('/userpage', {
         templateUrl: 'partials/userpage.html',
-        controller:"UserController"
+        controller: "UserController"
     }).
     when('/myteam', {
         templateUrl: 'partials/myteam.html',
-        controller:"LeaveController"
+        controller: "LeaveController"
     }).
     when('/viewemployees', {
         templateUrl: 'partials/viewemployees.html',
-        controller:"EmployeeController"
+        controller: "EmployeeController"
+    }).
+    when('/addemployee', {
+        templateUrl: 'partials/addemployee.html',
+    }).
+    when('/adddepartment', {
+        templateUrl: 'partials/adddepartment.html',
+        controller: "DepartmentController"
+    }).
+    when('/addleavepolicy', {
+        templateUrl: 'partials/addleavepolicy.html',
+        controller: "LeavePolicyController"
     }).
     otherwise({
         redirectTo: '/'

@@ -1,0 +1,23 @@
+<main class="container" style="padding-top: 100px;"
+	ng-controller="LeavePolicyController">
+<div>
+	<h2>Update Leave Policy</h2>
+	<table class="table table-hover">
+		<thead class="thead-inverse">
+			<th>Sno</th>
+			<th>Role Name</th>
+			<th>Leave Type</th>
+			<th>No of Days</th>
+			<th>Update Leave Policy</th>
+		</thead>
+		<tr ng-repeat="leavepolicy in leavepolicies">
+			<td>{{index+1}}</td>
+			<td>{{leavepolicy.role_name}}</td>
+			<td>{{leavepolicy.type_name}}</td>
+			<td>{{leavepolicy.no_of_days}}</td>
+			<td><button type="button" class="btn btn-success">Update
+					Leave Policy</button></td>
+		</tr>
+	</table>
+</div>
+</main>

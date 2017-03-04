@@ -30,7 +30,7 @@ public class LeavePolicyDAOImpl {
 	public List<LeavePolicy> getAllLeavePolicy() throws DataServiceException{
 		List<LeavePolicy> leavePolicy = null;
 		try {
-			StringBuilder sb = new StringBuilder("select * from leave_policy");
+			StringBuilder sb = new StringBuilder("SELECT lp.id,p.name AS policy_name,p.policy_year,r.NAME AS role_name,lt.NAME AS type_name,no_of_days FROM leave_policy lp JOIN policies p ON lp.policy_id=p.id JOIN roles r ON lp.role_id=r.id JOIN leave_types lt ON lp.leave_type_id=lt.id");
 			leavePolicy = dataRetriver.retrieveListBySQL(sb.toString());
 			logger.info("data retrieval success..");
 		} catch (DataAccessException e) {

@@ -30,7 +30,7 @@ public class EmployeeDAOImpl {
 	public List<Employee> getAllEmployees() throws DataServiceException{
 		List<Employee> employees = null;
 		try {
-			StringBuilder sb = new StringBuilder("SELECT e.name AS empName,e.joining_date,r.name,m.name AS managerName,d.name AS deptName FROM employees e JOIN roles r ON r.`ID`=e.`ROLE_ID` JOIN employees m ON e.id=m.manager_id JOIN departments d ON e.department_id=d.id;");
+			StringBuilder sb = new StringBuilder("SELECT e.name AS name,e.joining_date,r.name AS roleName,m.name AS managerName,d.name AS deptName FROM employees e JOIN roles r ON r.`ID`=e.`ROLE_ID` LEFT JOIN employees m ON e.id=m.manager_id JOIN departments d ON e.department_id=d.id;");
 			employees = dataRetriver.retrieveListBySQL(sb.toString());
 			logger.info("Categories data retrieval success..");
 		} catch (DataAccessException e) {
