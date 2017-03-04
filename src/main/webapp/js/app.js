@@ -27,6 +27,10 @@ config(['$routeProvider', function($routeProvider) {
         templateUrl: 'partials/myteam.html',
         controller:"LeaveController"
     }).
+    when('/viewemployees', {
+        templateUrl: 'partials/viewemployees.html',
+        controller:"EmployeeController"
+    }).
     otherwise({
         redirectTo: '/'
     });
