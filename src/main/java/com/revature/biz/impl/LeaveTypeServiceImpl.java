@@ -41,4 +41,9 @@ public class LeaveTypeServiceImpl {
 		logger.info("retrived successfully");
 		return leaveType;
 	}
+	public Integer update(LeaveType leaveType) throws DataServiceException {
+		int rows=leaveTypeDAO.update(leaveType);
+		logger.info("Updated leavetype");
+		return rows;
+	}
 }

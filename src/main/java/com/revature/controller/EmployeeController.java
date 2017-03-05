@@ -61,4 +61,39 @@ public class EmployeeController {
 		return null;
 
 	}
+	@PostMapping("/releave")
+	public Integer releaveEmployee(@RequestBody Employee e)
+	{
+		Employee emp=new Employee();
+		logger.info("Adding employee data");
+		try {
+			emp.setReleaving(e.getReleaving());
+			emp.setReleavingReason(e.getReleavingReason());
+			emp.setId(e.getId());
+			return employee.releaveEmployee(emp);
+		} catch (DataServiceException ex) {
+			// TODO Auto-generated catch block
+			ex.printStackTrace();
+		}
+		return null;
+
+	}
+	@PostMapping("/updaterole")
+	public Integer updateRole(@RequestBody Employee e)
+	{
+		Employee emp=new Employee();
+		logger.info("Adding employee data");
+		try {
+			Role role=new Role();
+			role.setId(e.getRoleId().getId());
+			emp.setRoleId(role);
+			emp.setId(e.getId());
+			return employee.updateRole(emp);
+		} catch (DataServiceException ex) {
+			// TODO Auto-generated catch block
+			ex.printStackTrace();
+		}
+		return null;
+
+	}
 }

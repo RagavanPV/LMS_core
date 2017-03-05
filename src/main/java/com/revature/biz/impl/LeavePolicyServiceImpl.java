@@ -29,4 +29,9 @@ public class LeavePolicyServiceImpl {
 		logger.info("Added LeavePolicy");
 		return rows;
 	}
+	public Integer update(LeavePolicy policy) throws DataServiceException {
+		int rows=leavePolicyDAO.update(policy);
+		logger.info("updated policy details.");
+		return rows;
+	}
 }

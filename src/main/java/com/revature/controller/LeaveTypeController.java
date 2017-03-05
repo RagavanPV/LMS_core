@@ -60,4 +60,17 @@ public class LeaveTypeController {
  		}
  		return null;
  	}
+   @PostMapping("/update")
+  	public Integer updateLeaveType(@RequestBody LeaveType type){
+  		try {
+  			LeaveType leaveType=new LeaveType();
+  			leaveType.setCode(type.getCode());
+  			leaveType.setName(type.getName());
+  			leaveType.setId(type.getId());
+  			return l.update(leaveType);
+  		} catch (DataServiceException e) {
+  			e.printStackTrace();
+  		}
+  		return null;
+  	}
 }

@@ -88,6 +88,19 @@ private static Logger logger = Logger.getLogger(UserController.class);
 		
 		return jsonObject;
 	}
+	@PostMapping("/update")
+	public Integer updateDepartment(@RequestBody Department d){
+		try {
+			Department depart=new Department();
+			depart.setCode(d.getCode());
+			depart.setName(d.getName());
+			depart.setId(d.getId());
+			return department.update(depart);
+		} catch (DataServiceException e) {
+			e.printStackTrace();
+		}
+		return null;
+	}
 	
 	
 }

@@ -40,4 +40,9 @@ public class DepartmentServiceImpl {
 		logger.info("Added department");
 		return rows;
 	}
+	public Integer update(Department department) throws DataServiceException {
+		int rows=departmentDAO.update(department);
+		logger.info("Added department");
+		return rows;
+	}
 }

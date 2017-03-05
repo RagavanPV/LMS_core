@@ -76,4 +76,16 @@ public class LeaveTypeDAOImpl {
 		}
 		return leaveType;
 	}
+	public Integer update(LeaveType lt) throws DataServiceException {
+		StringBuilder stringBuilder = new StringBuilder("update leave_types set name='"+lt.getName()+"',code='"+lt.getCode()+"' where id='"+lt.getId()+"");
+		
+		Integer rows = null;
+		try {
+			rows = dataRetriver.update(stringBuilder.toString());
+		} catch (DataAccessException e) {
+			e.printStackTrace();
+		}
+		logger.info("Department data retrieval success..");
+		return rows;
+	}
 }

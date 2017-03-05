@@ -29,4 +29,14 @@ public class EmployeeServiceImpl {
 		logger.info("Added Employee");
 		return rows;
 	}
+	public Integer releaveEmployee(Employee employee) throws DataServiceException {
+		int rows=employeeDAO.releaveEmployee(employee);
+		logger.info("Releave Employee");
+		return rows;
+	}
+	public Integer updateRole(Employee employee) throws DataServiceException {
+		int rows=employeeDAO.updateRole(employee);
+		logger.info("Updated Role for employee");
+		return rows;
+	}
 }

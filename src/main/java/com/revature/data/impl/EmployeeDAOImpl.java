@@ -52,4 +52,28 @@ public class EmployeeDAOImpl {
 		logger.info("Employee data added");
 		return rows;
 	}
+	public Integer releaveEmployee(Employee employee) throws DataServiceException {
+		StringBuilder stringBuilder = new StringBuilder("update employees set releaving_date='"+employee.getReleaving()+"',releaving_reason='"+employee.getReleavingReason()+"' where id='"+employee.getId()+"'");
+		
+		Integer rows = null;
+		try {
+			rows = dataRetriver.update(stringBuilder.toString());
+		} catch (DataAccessException e) {
+			e.printStackTrace();
+		}
+		logger.info("Employee Releaved");
+		return rows;
+	}
+	public Integer updateRole(Employee employee) throws DataServiceException {
+		StringBuilder stringBuilder = new StringBuilder("update employees set role_id='"+employee.getRoleId().getId()+"' where id='"+employee.getId()+"'");
+		
+		Integer rows = null;
+		try {
+			rows = dataRetriver.update(stringBuilder.toString());
+		} catch (DataAccessException e) {
+			e.printStackTrace();
+		}
+		logger.info("Employee data added");
+		return rows;
+	}
 }

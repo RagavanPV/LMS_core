@@ -52,4 +52,16 @@ public class LeavePolicyDAOImpl {
 		logger.info("LeavePolicy data added");
 		return rows;
 	}
+	public Integer update(LeavePolicy policy) throws DataServiceException {
+		StringBuilder stringBuilder = new StringBuilder("update leave_policy set policy_id='"+policy.getPolicyId().getId()+"',role_id='"+policy.getRoleId().getId()+"',leave_type_id='"+policy.getLeaveTypeId().getId()+"',no_of_days='"+policy.getNoOfDays()+"' where id='"+policy.getId()+"");
+		
+		Integer rows = null;
+		try {
+			rows = dataRetriver.update(stringBuilder.toString());
+		} catch (DataAccessException e) {
+			e.printStackTrace();
+		}
+		logger.info("LeavePolicy data added");
+		return rows;
+	}
 }

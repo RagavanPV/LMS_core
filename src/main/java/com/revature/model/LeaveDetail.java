@@ -6,7 +6,8 @@
 package com.revature.model;
 
 import java.io.Serializable;
-import java.util.Date;
+import java.sql.Date;
+
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -16,12 +17,11 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.Lob;
 import javax.persistence.ManyToOne;
-import javax.persistence.NamedQueries;
-import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
-import javax.xml.bind.annotation.XmlRootElement;
+
+import lombok.Data;
 
 /**
  *
@@ -29,7 +29,7 @@ import javax.xml.bind.annotation.XmlRootElement;
  */
 @Entity
 @Table(name = "leave_details")
-
+@Data
 public class LeaveDetail implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id
@@ -39,11 +39,9 @@ public class LeaveDetail implements Serializable {
     private Integer id;
     @Basic(optional = false)
     @Column(name = "DATE_OF_LEAVE")
-    @Temporal(TemporalType.DATE)
     private Date dateOfLeave;
     @Basic(optional = false)
     @Column(name = "APPLIED_DATE")
-    @Temporal(TemporalType.DATE)
     private Date appliedDate;
     @Basic(optional = false)
     @Column(name = "SESSION")
