@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 import com.revature.data.exception.DataServiceException;
 import com.revature.data.impl.DepartmentDAOImpl;
 import com.revature.model.Department;
+import com.revature.model.Employee;
 
 @Service
 public class DepartmentServiceImpl {
@@ -36,4 +37,5 @@ public class DepartmentServiceImpl {
 		logger.info("Added department");
 		return rows;
 	}
+	 
 }

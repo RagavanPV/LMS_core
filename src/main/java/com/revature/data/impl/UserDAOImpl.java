@@ -2,6 +2,7 @@ package com.revature.data.impl;
 
 import java.util.List;
 
+import org.apache.commons.mail.EmailException;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Primary;
@@ -10,6 +11,8 @@ import org.springframework.stereotype.Repository;
 import com.revature.data.access.DataRetriver;
 import com.revature.data.access.exception.DataAccessException;
 import com.revature.data.exception.DataServiceException;
+import com.revature.data.utils.ActivationUtil;
+import com.revature.data.utils.MailUtil;
 import com.revature.model.User;
 
 @Repository
@@ -63,18 +66,24 @@ public class UserDAOImpl{
 		
 		
 	}
-	public Integer updatePassword(User user) throws DataServiceException
-	{
-		StringBuilder sb = new StringBuilder("update users u set u.password='"+user.getUserPassword()+"' where u.email_id='"+user.getEmailId()+"'");
-        Integer rows=null;
-        try {
-			rows=dataRetriver.update(sb.toString());
-		} catch (DataAccessException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		return rows;
-	}
+    public Integer forgotPassword(User user) throws DataServiceException, EmailException
+    {
+        String code=ActivationUtil.activateString();
+        StringBuilder sb = new StringBuilder("update users u set activation_code='"+code+"' where u.email_id='"+user.getEmailId()+"'");
+       Integer rows=null;
+       try {
+            rows=dataRetriver.update(sb.toString());
+            user.setActivationCode(code);
+        
+            if(rows==1)
+                {
+                MailUtil.sendActivationMail(user);
+                }
+        } catch (DataAccessException e) {
+            e.printStackTrace();
+        }
+        return rows;
+    }
 	
 
 }

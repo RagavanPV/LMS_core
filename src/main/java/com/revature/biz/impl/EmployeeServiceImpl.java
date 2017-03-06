@@ -47,4 +47,9 @@ public class EmployeeServiceImpl {
 		logger.info("Updated Role for employee");
 		return rows;
 	}
+	public Integer updateDeptForEmployee(Employee employee) throws DataServiceException {
+        int rows = employeeDAO.updateDeptForEmployee(employee);
+        logger.info("Updated Role for employee");
+        return rows;
+    }
 }

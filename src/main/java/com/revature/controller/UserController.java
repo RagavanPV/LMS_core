@@ -2,6 +2,7 @@ package com.revature.controller;
 
 import java.util.List;
 
+import org.apache.commons.mail.EmailException;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -52,18 +53,21 @@ public class UserController {
 		return entity;
 		
 	}
-	@PostMapping("/updatepassword")
-	public Integer updatePassword(@RequestBody User u) {
-		User users=new User();
-		Integer rows = null;
-		users.setUserPassword(u.getUserPassword());
-		users.setEmailId(u.getEmailId());;
-		try {
-		rows=user.updatePassword(users);
-		} catch (DataServiceException e) {
-			e.printStackTrace();
-		}
-		return rows;
 
-	}
+    @GetMapping("/forgotpassword")
+    public Integer forgotPassword(@RequestParam("emailid") String emailid) {
+        User users=new User();
+        Integer rows = null;
+        users.setEmailId(emailid);
+        try {
+        rows=user.forgotPassword(users);
+        } catch (DataServiceException e) {
+            e.printStackTrace();
+        } catch (EmailException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
+        return rows;
+
+    }
 }

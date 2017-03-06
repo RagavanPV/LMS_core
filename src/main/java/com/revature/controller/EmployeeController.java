@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.revature.biz.impl.EmployeeServiceImpl;
 import com.revature.data.exception.DataServiceException;
+import com.revature.model.Department;
 import com.revature.model.Employee;
 import com.revature.model.Role;
 
@@ -90,4 +91,19 @@ public class EmployeeController {
 		return null;
 
 	}
+	 @GetMapping("/updatedeptbyemp")
+	    public Integer updateDept(@RequestParam("empid") int empid,@RequestParam("deptid") int deptid) {
+	        Employee emp = new Employee();
+	        logger.info("updating employee data");
+	        try {
+	            emp.setId(empid);
+	            Department department=new Department();
+	            department.setId(deptid);
+	            emp.setDepartmentId(department);
+	            return employee.updateDeptForEmployee(emp);
+	        } catch (DataServiceException ex) {
+	            ex.printStackTrace();
+	        }
+	        return null;
+	    }		
 }

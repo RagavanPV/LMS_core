@@ -46,4 +46,21 @@ storeApp.controller('EmployeeController', ['$rootScope','$routeParams' ,'$scope'
             $location.path('/');
         })
     }
+    $scope.updatedeptforemp=function(empId,dept){
+    	console.log(empId+" "+dept);
+    	var url = 'employee/updatedeptbyemp?empid='+empId+"&deptid="+dept;
+    	$http.get(url).success(function(response) {
+            var employee = response;
+            if (employee == 1) {
+               $location.path("#/viewemployees");
+               $scope.msg="Succesfully Updated Department";
+                
+            } else {
+                $scope.error = "Cannot update department";
+            }
+
+        }).error(function() {
+            $location.path('/');
+        })
+    }
 }]);

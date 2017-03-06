@@ -51,4 +51,16 @@ public class LeavePolicyDAOImpl {
 				logger.info("LeavePolicy data added");
 				return rows;
 			}
+	public Integer updateNoOfDays(LeavePolicy leavePolicy) throws DataServiceException {
+        StringBuilder stringBuilder = new StringBuilder("update leave_policy set no_of_days='" + leavePolicy.getNoOfDays() + "' where id='" + leavePolicy.getId() + "'");
+        
+        Integer rows = null;
+        try {
+            rows = dataRetriver.update(stringBuilder.toString());
+        } catch (DataAccessException e) {
+            e.printStackTrace();
+        }
+        logger.info("Employee data added");
+        return rows;
+    }
 }

@@ -15,13 +15,34 @@
 			<th>Update Leave Policy</th>
 		</thead>
 		<tr ng-repeat="leavepolicy in leavepolicies">
-			<td>{{index+1}}</td>
+			<td>{{$index+1}}</td>
 			<td>{{leavepolicy.role_name}}</td>
 			<td>{{leavepolicy.type_name}}</td>
 			<td>{{leavepolicy.no_of_days}}</td>
-			<td><button type="button" class="btn btn-success">Update
-					Leave Policy</button></td>
+			<td><button type="button" data-toggle="modal" data-target="#myModal" ng-click="leaveid(leavepolicy.id)" class="btn btn-success">Update Leave Policy</button></td>
 		</tr>
 	</table>
 </div>
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">No Of Days</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <form ng-submit="updatenoofdays(LeavePolicyId)">
+                            <div class="input-group mb-2 mr-sm-2 mb-sm-0">
+                               <input type="text" class="form-control" required id="noOfdays" ng-model="noofdays" placeholder="No Of Days">
+                            </div>
+                            <br>
+                            <input class="btn btn-primary" type="submit" value="Update No Of Days">
+                        </form>
+                    </div>
+                   
+                </div>
+            </div>
+        </div>
 </main>

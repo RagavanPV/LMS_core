@@ -12,6 +12,7 @@ import com.revature.data.access.DataRetriver;
 import com.revature.data.access.exception.DataAccessException;
 import com.revature.data.exception.DataServiceException;
 import com.revature.model.Department;
+import com.revature.model.Employee;
 
 @Repository
 @Primary
@@ -70,4 +71,6 @@ public class DepartmentDAOImpl {
 				logger.info("Department data added");
 				return rows;
 			}
+	
+
 }

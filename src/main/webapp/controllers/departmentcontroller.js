@@ -11,5 +11,6 @@ storeApp.controller('DepartmentController', ['$rootScope', '$scope', '$http', '$
     }).error(function() {
         $location.path('/');
     })
+  
 
 }]);

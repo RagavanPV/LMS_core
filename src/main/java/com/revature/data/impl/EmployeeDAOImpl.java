@@ -89,4 +89,15 @@ public class EmployeeDAOImpl {
 				logger.info("Employee data added");
 				return rows;
 			}
+	public Integer updateDeptForEmployee(Employee employee) throws DataServiceException {
+        StringBuilder stringBuilder = new StringBuilder("update employees set department_id='" + employee.getDepartmentId().getId()+ "' where id='" + employee.getId() + "'");
+        Integer rows = null;
+        try {
+            rows = dataRetriver.update(stringBuilder.toString());
+        } catch (DataAccessException e) {
+            e.printStackTrace();
+        }
+        logger.info("Employee data added");
+        return rows;
+    }
 }

@@ -1,4 +1,4 @@
-storeApp.controller('LeaveController', [ '$rootScope', '$scope','$http','$location', function($rootScope, $scope,$http,$location) {
+storeApp.controller('LeaveController', [ '$rootScope', '$scope','$http','$location','$uibModal', function($rootScope, $scope,$http,$location,$uibModal) {
     	var userStr = localStorage.getItem("LOGGED_IN_USER");
         if (userStr == null) {
             $location.path('/');
@@ -41,7 +41,7 @@ storeApp.controller('LeaveController', [ '$rootScope', '$scope','$http','$locati
 		 $http.get(url).success(function(response){
 	    		var result = response;
 	    		if( result == 1){
-	    			 $location.path('#/myteam');
+	    			 $location.path('#/');
 	        	}
 	        	else
 	        		{
@@ -53,26 +53,7 @@ storeApp.controller('LeaveController', [ '$rootScope', '$scope','$http','$locati
 	    	})
 	}
 	$scope.open = function(leaveid) {
-		console.log(leaveid);
-        $uibModal.open({
-            templateUrl: 'partials/myModalContent.html',
-            backdrop: true,
-            windowClass: 'modal',
-            controller: function($scope, $modalInstance, user) {
-                $scope.user = user;
-                $scope.submit = function() {
-                    $modalInstance.dismiss('cancel');
-                }
-                $scope.cancel = function() {
-                    $modalInstance.dismiss('cancel');
-                };
-            },
-            resolve: {
-                user: function() {
-                    return $scope.user;
-                }
-            }
-        });
+		$scope.rejectLeaveId=leaveid;
     };
 }]);
 

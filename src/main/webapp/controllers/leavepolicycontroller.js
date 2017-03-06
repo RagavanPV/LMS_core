@@ -11,5 +11,21 @@ storeApp.controller('LeavePolicyController', ['$rootScope', '$scope', '$http', '
     }).error(function() {
         $location.path('/');
     })
+$scope.updatenoofdays=function(id){
+    	 var url = 'leavepolicy/updatenoofdays?id='+id+'&no_of_days='+$scope.noofdays;
+    	 $http.get(url).success(function(response) {
+    	        var result = response;
+    	        if (result == 1) {
+    	            $location.path("#/");
+    	        } else {
+    	            $scope.error = "Cannot get departments";
+    	        }
 
+    	    }).error(function() {
+    	        $location.path('/');
+    	    })
+    }
+    $scope.leaveid=function(id){
+    	$scope.LeavePolicyId=id;
+    }
 }]);

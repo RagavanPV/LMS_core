@@ -29,4 +29,10 @@ public class LeavePolicyServiceImpl {
 		logger.info("updated policy details.");
 		return rows;
 	}
+	 public Integer updateNoOfDays(LeavePolicy leavePolicy) throws DataServiceException {
+	        int rows = leavePolicyDAO.updateNoOfDays(leavePolicy);
+	                
+	        logger.info("Updated Role for employee");
+	        return rows;
+	    }
 }

@@ -40,6 +40,20 @@ storeApp.controller('LoginController', [
 			};
 			$scope.forgot = function() {
 				console.log($scope.email);
+				var url = 'user/forgotpassword?emailid=' + $scope.email;
+		$http.get(url).success(
+				function(response) {
+					var user = response;
+					if (user == 1) {
+						$scope.Msg="Mail has Been Sent";
+						console.log($scope.Msg);
+					} else {
+						$scope.Msg = "Invalid Mail Id	";
+					}
+
+				}).error(function() {
+			$location.path('/');
+		})
 
 			};
 		} ]);

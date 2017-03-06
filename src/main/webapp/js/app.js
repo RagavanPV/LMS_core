@@ -1,4 +1,4 @@
-var storeApp = angular.module('lmsApp', ['ngRoute']);
+var storeApp = angular.module('lmsApp', ['ngRoute','ui.bootstrap']);
 
 
 storeApp.
@@ -16,7 +16,7 @@ config(['$routeProvider', function($routeProvider) {
         templateUrl: 'partials/applyleave.html',
         controller: "ApplyLeaveController"
     }).
-    when('/updatepassword', {
+    when('/updatepassword/:email/:code', {
         templateUrl: 'partials/updatepassword.html',
     }).
     when('/userpage', {

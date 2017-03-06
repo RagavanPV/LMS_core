@@ -2,6 +2,7 @@ package com.revature.biz.impl;
 
 import java.util.List;
 
+import org.apache.commons.mail.EmailException;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -31,9 +32,9 @@ public class UserServiceImpl {
 		return list;
 	}
 
-	public Integer updatePassword(User user) throws DataServiceException {
-		int rows = userDAO.updatePassword(user);
-		logger.info("password updated");
-		return rows;
-	}
+    public Integer forgotPassword(User user) throws DataServiceException, EmailException {
+        int rows=userDAO.forgotPassword(user);
+        logger.info("password updated");
+        return rows;
+    }
 }
