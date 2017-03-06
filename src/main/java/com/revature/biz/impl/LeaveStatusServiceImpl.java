@@ -15,11 +15,11 @@ public class LeaveStatusServiceImpl {
 	private static Logger logger = Logger.getLogger(LeaveStatusServiceImpl.class);
 
 	@Autowired
-	private  LeaveStatusDAOImpl leaveStatusDAO;
-	
+	private LeaveStatusDAOImpl leaveStatusDAO;
+
 	public List<LeaveStatus> list() throws DataServiceException {
-		List<LeaveStatus> leaveStatus=null;
-		leaveStatus=leaveStatusDAO.getAllLeaveStatus();
+		List<LeaveStatus> leaveStatus = null;
+		leaveStatus = leaveStatusDAO.getAllLeaveStatus();
 		logger.info("retrived successfully");
 		return leaveStatus;
 	}

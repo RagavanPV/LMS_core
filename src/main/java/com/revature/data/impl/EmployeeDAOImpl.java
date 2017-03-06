@@ -30,7 +30,7 @@ public class EmployeeDAOImpl {
 	public List<Employee> getAllEmployees() throws DataServiceException{
 		List<Employee> employees = null;
 		try {
-			StringBuilder sb = new StringBuilder("SELECT e.name AS name,e.joining_date,r.name AS roleName,m.name AS managerName,d.name AS deptName FROM employees e JOIN roles r ON r.`ID`=e.`ROLE_ID` LEFT JOIN employees m ON e.id=m.manager_id JOIN departments d ON e.department_id=d.id;");
+			StringBuilder sb = new StringBuilder("SELECT e.id,e.name AS name,e.joining_date,r.name AS roleName,m.name AS managerName,d.name AS deptName FROM employees e JOIN roles r ON r.`ID`=e.`ROLE_ID` LEFT JOIN employees m ON e.manager_id=m.id JOIN departments d ON e.department_id=d.id;");
 			employees = dataRetriver.retrieveListBySQL(sb.toString());
 			logger.info("Categories data retrieval success..");
 		} catch (DataAccessException e) {
@@ -52,4 +52,41 @@ public class EmployeeDAOImpl {
         }
         return employees;
 }
+	public List<Employee> getEmpById(Integer empId) throws DataServiceException{
+        List<Employee> employees = null;
+        try {
+            StringBuilder sb = new StringBuilder("SELECT EMPLOYEES.ID,EMPLOYEES.NAME EMP_NAME ,ROLES.NAME ROLE,DEPARTMENTS.NAME DEPT_NAME FROM EMPLOYEES JOIN DEPARTMENTS JOIN ROLES "
++"ON EMPLOYEES.ROLE_ID=ROLES.ID AND EMPLOYEES.DEPARTMENT_ID=DEPARTMENTS.ID WHERE EMPLOYEES.ID='"+empId+"'");
+            employees = dataRetriver.retrieveListBySQL(sb.toString());
+            logger.info("Categories data retrieval success..");
+        } catch (DataAccessException e) {
+            logger.error(e.getMessage(), e);
+            throw new DataServiceException(DataUtils.getPropertyMessage("data_retrieval_fail"), e);
+        }
+        return employees;
+}
+	public Integer releaveEmployee(Employee employee) throws DataServiceException {
+				StringBuilder stringBuilder = new StringBuilder("update employees set releaving_date='"+employee.getReleaving()+"',releaving_reason='"+employee.getReleavingReason()+"' where id='"+employee.getId()+"'");
+				
+				Integer rows = null;
+				try {
+					rows = dataRetriver.update(stringBuilder.toString());
+				} catch (DataAccessException e) {
+					e.printStackTrace();
+				}
+				logger.info("Employee Releaved");
+				return rows;
+			}
+	public Integer updateRoleForEmployee(Employee employee) throws DataServiceException {
+				StringBuilder stringBuilder = new StringBuilder("update employees set role_id='"+employee.getRoleId().getId()+"' where id='"+employee.getId()+"'");
+				
+				Integer rows = null;
+				try {
+					rows = dataRetriver.update(stringBuilder.toString());
+				} catch (DataAccessException e) {
+					e.printStackTrace();
+				}
+				logger.info("Employee data added");
+				return rows;
+			}
 }

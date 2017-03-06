@@ -48,7 +48,7 @@ public class UserDAOImpl{
 	
 	public List<User> getUser(String emailId,String password) throws DataServiceException{
 		
-		StringBuilder stringBuilder=new StringBuilder("SELECT u.id userid,e.gender gender,u.employee_id employeeid,u.email_id useremail,e.name username,e.role_id roleid,IFNULL((SELECT e.id FROM employees e JOIN employees m ON e.`ID`=m.manager_id JOIN users u ON u.`EMPLOYEE_ID`=e.`ID` WHERE email_id='"+emailId+"'),0) AS manager_id FROM users u JOIN employees e ON u.employee_id=e.id where email_id='"+emailId+"' and password='"+password+"'");
+		StringBuilder stringBuilder=new StringBuilder("SELECT u.id userid,e.gender gender,u.employee_id employeeid,u.email_id useremail,e.name username,e.role_id roleid,IFNULL((SELECT DISTINCT e.id FROM employees e JOIN employees m ON e.`ID`=m.manager_id JOIN users u ON u.`EMPLOYEE_ID`=e.`ID` WHERE email_id='"+emailId+"'),0) AS manager_id FROM users u JOIN employees e ON u.employee_id=e.id where email_id='"+emailId+"' and password='"+password+"'");
 		List<User> users = null;
 		try {
 			users = dataRetriver.retrieveListBySQL(stringBuilder.toString());

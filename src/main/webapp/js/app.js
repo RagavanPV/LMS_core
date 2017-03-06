@@ -42,6 +42,10 @@ config(['$routeProvider', function($routeProvider) {
         templateUrl: 'partials/addleavepolicy.html',
         controller: "LeavePolicyController"
     }).
+    when('/updateemployee/:empid', {
+        templateUrl: 'partials/updateemployee.html',
+        controller: "EmployeeController"
+    }).
     otherwise({
         redirectTo: '/'
     });

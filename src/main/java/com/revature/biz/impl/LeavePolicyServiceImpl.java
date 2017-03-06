@@ -15,12 +15,18 @@ public class LeavePolicyServiceImpl {
 	private static Logger logger = Logger.getLogger(LeavePolicyServiceImpl.class);
 
 	@Autowired
-	private  LeavePolicyDAOImpl leavePolicyDAO;
-	
+	private LeavePolicyDAOImpl leavePolicyDAO;
+
 	public List<LeavePolicy> getAllLeavePolicy() throws DataServiceException {
-		List<LeavePolicy> leavePolicy=null;
-		leavePolicy=leavePolicyDAO.getAllLeavePolicy();
+		List<LeavePolicy> leavePolicy = null;
+		leavePolicy = leavePolicyDAO.getAllLeavePolicy();
 		logger.info("retrived successfully");
 		return leavePolicy;
+	}
+
+	public Integer updateLeavePolicy(LeavePolicy policy) throws DataServiceException {
+		int rows = leavePolicyDAO.updateLeavePolicy(policy);
+		logger.info("updated policy details.");
+		return rows;
 	}
 }

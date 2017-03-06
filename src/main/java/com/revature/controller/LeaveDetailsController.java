@@ -55,5 +55,35 @@ public class LeaveDetailsController {
         }
         return null;
 }
+    @GetMapping("/acceptleave")
+    public int acceptLeaveController(@RequestParam("leaveid")int leaveId,@RequestParam("userid") int managerId) {
+        try {
+            logger.info("Getting the Employee data...");
+            return leaveDetailsServiceImpl.acceptLeave(leaveId,managerId);
+                    } catch (DataServiceException e) {
+            e.printStackTrace();
+        }
+        return 0;
+}
+    @GetMapping("/rejectleave")
+    public int rejectLeaveController(@RequestParam("leaveid")int leaveId,@RequestParam("userid") int managerId,@RequestParam("reason")String reason) {
+        try {
+            logger.info("Getting the Employee data...");
+            return leaveDetailsServiceImpl.rejectLeave(leaveId,managerId,reason);
+                    } catch (DataServiceException e) {
+            e.printStackTrace();
+        }
+        return 0;
+}
+    @GetMapping("/cancelleave")
+    public int rejectLeaveController(@RequestParam("leaveid")int leaveId) {
+        try {
+            logger.info("Getting the Employee data...");
+            return leaveDetailsServiceImpl.cancelLeave(leaveId);
+                    } catch (DataServiceException e) {
+            e.printStackTrace();
+        }
+        return 0;
+}
 
 }

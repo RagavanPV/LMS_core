@@ -15,11 +15,11 @@ public class WeekendServiceImpl {
 	private static Logger logger = Logger.getLogger(WeekendServiceImpl.class);
 
 	@Autowired
-	private  WeekendDAOImpl weekendDAO;
-	
+	private WeekendDAOImpl weekendDAO;
+
 	public List<Weekend> list() throws DataServiceException {
-		List<Weekend> weekend=null;
-		weekend=weekendDAO.getAllWeekends();
+		List<Weekend> weekend = null;
+		weekend = weekendDAO.getAllWeekends();
 		logger.info("retrived successfully");
 		return weekend;
 	}

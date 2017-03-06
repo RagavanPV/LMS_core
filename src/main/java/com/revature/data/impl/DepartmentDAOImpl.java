@@ -59,4 +59,15 @@ public class DepartmentDAOImpl {
 		logger.info("Department data retrieval success..");
 		return departmentModel;
 	}
+	public Integer updateDepartment(Department department) throws DataServiceException {
+				StringBuilder stringBuilder = new StringBuilder("update departments set code='"+department.getCode()+"',name='"+department.getDepartment()+"' where id='"+department.getId()+"'");
+				Integer rows = null;
+				try {
+					rows = dataRetriver.update(stringBuilder.toString());
+				} catch (DataAccessException e) {
+					e.printStackTrace();
+				}
+				logger.info("Department data added");
+				return rows;
+			}
 }

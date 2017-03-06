@@ -15,18 +15,25 @@ public class DepartmentServiceImpl {
 	private static Logger logger = Logger.getLogger(DepartmentServiceImpl.class);
 
 	@Autowired
-	private  DepartmentDAOImpl departmentDAO;
-	
+	private DepartmentDAOImpl departmentDAO;
+
 	public List<Department> getAllDepartment() throws DataServiceException {
-		List<Department> department=null;
-		department=departmentDAO.getAllDepartment();
+		List<Department> department = null;
+		department = departmentDAO.getAllDepartment();
 		logger.info("retrived successfully");
 		return department;
 	}
+
 	public Department getDepartmentById(int id) throws DataServiceException {
-		Department department=new Department();
-		department=departmentDAO.getDepartmentById(id);
+		Department department = new Department();
+		department = departmentDAO.getDepartmentById(id);
 		logger.info("retrived successfully");
 		return department;
+	}
+
+	public Integer updateDepartment(Department department) throws DataServiceException {
+		int rows = departmentDAO.updateDepartment(department);
+		logger.info("Added department");
+		return rows;
 	}
 }

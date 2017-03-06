@@ -11,6 +11,22 @@ storeApp.controller('UserController', [ '$rootScope', '$scope', '$http',
 				console.log($scope.password);
 				console.log($scope.cfrmpassword);
 			}
+			$scope.cancelleave = function(leaveid) {
+				console.log($scope.LOGGED_IN_USER.userid+" "+leaveid);
+				var url = 'leavedetail/cancelleave?leaveid='+leaveid;
+				console.log(url);
+				$http.get(url).success(function(response) {
+					var result = response;
+		    		if( result == 1){
+		    			 $location.path('#/userpage');
+		        	}else {
+						$scope.error = "Cannot cancel leave details";
+					}
+				}).error(function() {
+					$location.path('/');
+				})
+				
+			}
 			$scope.home = function() {
 				var employeeId = $scope.LOGGED_IN_USER.employeeid;
 				var url = 'leavedetail/byempid?empid=' + employeeId;

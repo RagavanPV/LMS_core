@@ -15,11 +15,11 @@ public class HolidayServiceImpl {
 	private static Logger logger = Logger.getLogger(HolidayServiceImpl.class);
 
 	@Autowired
-	private  HolidayDAOImpl holidayDAO;
-	
+	private HolidayDAOImpl holidayDAO;
+
 	public List<Holiday> getAllHolidays() throws DataServiceException {
-		List<Holiday> holiday=null;
-		holiday=holidayDAO.getAllHolidays();
+		List<Holiday> holiday = null;
+		holiday = holidayDAO.getAllHolidays();
 		logger.info("retrived successfully");
 		return holiday;
 	}

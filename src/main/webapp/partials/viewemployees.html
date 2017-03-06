@@ -1,4 +1,8 @@
-<main class="container" style="padding-top: 100px;"
+<nav style="padding-top:70px" class="breadcrumb">
+  <a class="breadcrumb-item" href="#/">Home</a>
+  <span class="breadcrumb-item active">View Employees</span>
+</nav>
+<main class="container" style="padding-top: 30px;"
 	ng-controller="EmployeeController" ng-init="viewallemployees()">
 <div>
 	<h2>Leave history</h2>
@@ -46,7 +50,7 @@
 			<td>{{employee.deptName}}</td>
 			<td>{{employee.managerName}}</td>
 			<td>{{employee.joining_date}}</td>
-			<td><button type="button" class="btn btn-success">Update Details</button></td>
+			<td><button type="button" ng-click="updateemp(employee.id)" class="btn btn-success">Update Details</button></td>
 		</tr>
 	</table>
 </div>

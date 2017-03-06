@@ -15,17 +15,36 @@ public class EmployeeServiceImpl {
 	private static Logger logger = Logger.getLogger(EmployeeServiceImpl.class);
 
 	@Autowired
-	private  EmployeeDAOImpl employeeDAO;
-	
+	private EmployeeDAOImpl employeeDAO;
+
 	public List<Employee> getAllEmployee() throws DataServiceException {
-		List<Employee> employee=null;
-		employee=employeeDAO.getAllEmployees();
+		List<Employee> employee = null;
+		employee = employeeDAO.getAllEmployees();
 		logger.info("retrived successfully");
 		return employee;
 	}
+
 	public List<Employee> getEmpListByManagerId(Integer managerId) throws DataServiceException {
-        List<Employee> employee=employeeDAO.getEmpByManagerId(managerId);
-        logger.info("retrived successfully");
-        return employee;
-    }
+		List<Employee> employee = employeeDAO.getEmpByManagerId(managerId);
+		logger.info("retrived successfully");
+		return employee;
+	}
+
+	public List<Employee> getEmpListById(Integer empId) throws DataServiceException {
+		List<Employee> employee = employeeDAO.getEmpById(empId);
+		logger.info("retrived successfully");
+		return employee;
+	}
+
+	public Integer releaveEmployee(Employee employee) throws DataServiceException {
+		int rows = employeeDAO.releaveEmployee(employee);
+		logger.info("Releave Employee");
+		return rows;
+	}
+
+	public Integer updateRoleForEmployee(Employee employee) throws DataServiceException {
+		int rows = employeeDAO.updateRoleForEmployee(employee);
+		logger.info("Updated Role for employee");
+		return rows;
+	}
 }

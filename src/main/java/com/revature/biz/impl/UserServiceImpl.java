@@ -11,27 +11,28 @@ import com.revature.data.impl.UserDAOImpl;
 import com.revature.model.User;
 
 @Service
-public class UserServiceImpl{
+public class UserServiceImpl {
 	private static Logger logger = Logger.getLogger(UserServiceImpl.class);
 
 	@Autowired
-	private  UserDAOImpl userDAO;
-	
+	private UserDAOImpl userDAO;
 
 	public List<User> getAllUsers() throws DataServiceException {
-		List<User> list=null;
-		list=userDAO.getAllUser();
+		List<User> list = null;
+		list = userDAO.getAllUser();
 		logger.info("retrived successfully");
 		return list;
 	}
-	public List<User> getUser(String emailId,String password) throws DataServiceException {
-		List<User> list=null;
-		list=userDAO.getUser(emailId,password);
+
+	public List<User> getUser(String emailId, String password) throws DataServiceException {
+		List<User> list = null;
+		list = userDAO.getUser(emailId, password);
 		logger.info("retrived successfully");
 		return list;
 	}
+
 	public Integer updatePassword(User user) throws DataServiceException {
-		int rows=userDAO.updatePassword(user);
+		int rows = userDAO.updatePassword(user);
 		logger.info("password updated");
 		return rows;
 	}

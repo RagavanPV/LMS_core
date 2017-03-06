@@ -15,11 +15,11 @@ public class PolicyServiceImpl {
 	private static Logger logger = Logger.getLogger(PolicyServiceImpl.class);
 
 	@Autowired
-	private  PolicyDAOImpl policyDAO;
-	
+	private PolicyDAOImpl policyDAO;
+
 	public List<Policy> getAllPolicy() throws DataServiceException {
-		List<Policy> policy=null;
-		policy=policyDAO.getAllPolicy();
+		List<Policy> policy = null;
+		policy = policyDAO.getAllPolicy();
 		logger.info("retrived successfully");
 		return policy;
 	}

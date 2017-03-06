@@ -15,11 +15,11 @@ public class RoleServiceImpl {
 	private static Logger logger = Logger.getLogger(RoleServiceImpl.class);
 
 	@Autowired
-	private  RoleDAOImpl RoleDAO;
-	
+	private RoleDAOImpl RoleDAO;
+
 	public List<Role> getAllRoles() throws DataServiceException {
-		List<Role> role=null;
-		role=RoleDAO.getAllRoles();
+		List<Role> role = null;
+		role = RoleDAO.getAllRoles();
 		logger.info("retrived successfully");
 		return role;
 	}

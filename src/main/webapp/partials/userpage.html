@@ -1,3 +1,4 @@
+
     <main class="container" style="padding-top: 100px;" ng-controller="UserController" ng-init="home()">
         <div>
             <h2>Leave history</h2>
@@ -21,7 +22,7 @@
                     <td>{{leavedetail.LEAVE_NAME}}</td>
 					<td>{{leavedetail.REASON}}</td>
 					<td>{{leavedetail.STATUS}}</td>
-					<td><button type="button"  class="btn btn-danger">Cancel Leave</button></td>
+					<td><button type="button" ng-show="(leavedetail.STATUS_ID==1 || leavedetail.STATUS_ID==3)" ng-click="cancelleave(leavedetail.ID)" class="btn btn-danger">Cancel Leave</button></td>
 					<td>{{leavedetail.DENIED_REASON}}</td>
                 </tr>
                 </table>

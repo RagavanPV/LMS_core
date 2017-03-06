@@ -15,12 +15,18 @@ public class LeaveTypeServiceImpl {
 	private static Logger logger = Logger.getLogger(LeaveTypeServiceImpl.class);
 
 	@Autowired
-	private  LeaveTypeDAOImpl leaveTypeDAO;
-	
+	private LeaveTypeDAOImpl leaveTypeDAO;
+
 	public List<LeaveType> list(String gender) throws DataServiceException {
-		List<LeaveType> leaveType=null;
-		leaveType=leaveTypeDAO.getAllLeaveTypes(gender);
+		List<LeaveType> leaveType = null;
+		leaveType = leaveTypeDAO.getAllLeaveTypes(gender);
 		logger.info("retrived successfully");
 		return leaveType;
+	}
+
+	public Integer updateLeaveType(LeaveType leaveType) throws DataServiceException {
+		int rows = leaveTypeDAO.updateLeaveType(leaveType);
+		logger.info("Updated leavetype");
+		return rows;
 	}
 }

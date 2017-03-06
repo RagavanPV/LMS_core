@@ -5,6 +5,8 @@ import java.util.List;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
@@ -41,5 +43,18 @@ private static Logger logger = Logger.getLogger(UserController.class);
 		}
 		return null;
 	}
+	@PostMapping("/update")
+		public Integer updateDepartment(@RequestBody Department d){
+			try {
+				Department depart=new Department();
+				depart.setCode(d.getCode());
+				depart.setDepartment(d.getDepartment());
+				depart.setId(d.getId());
+				return department.updateDepartment(depart);
+			} catch (DataServiceException e) {
+				e.printStackTrace();
+			}
+			return null;
+		}
 	
 }
