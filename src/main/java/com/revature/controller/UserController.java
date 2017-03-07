@@ -70,4 +70,32 @@ public class UserController {
         return rows;
 
     }
+    @GetMapping("/verifycode")
+    public List<User> verifyCode(@RequestParam("emailid") String emailid,@RequestParam("code") String actcode) {
+        User users=new User();
+        List<User> rows = null;
+        users.setEmailId(emailid);
+        users.setActivationCode(actcode);
+        try {
+        rows=user.checkActivation(users);
+        } catch (DataServiceException e) {
+            e.printStackTrace();
+        }
+        return rows;
+
+    }
+    @PostMapping("/updatepassword")
+    public Integer updatePassword(@RequestBody User u) {
+        User use = new User();
+        logger.info("Adding employee data");
+        try {
+            
+           use.setEmailId(u.getEmailId());
+           use.setUserPassword(u.getUserPassword());
+           return user.updatePassword(use);
+        } catch (DataServiceException ex) {
+            ex.printStackTrace();
+        }
+        return null;
+    }
 }

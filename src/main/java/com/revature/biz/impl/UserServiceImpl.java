@@ -37,4 +37,15 @@ public class UserServiceImpl {
         logger.info("password updated");
         return rows;
     }
+    public List<User> checkActivation(User user) throws DataServiceException {
+        List<User> list=null;
+        list=userDAO.checkActivation(user);
+        logger.info("retrived successfully");
+        return list;
+    }
+    public Integer updatePassword(User user) throws DataServiceException {
+        int rows = userDAO.updatePassword(user);
+        logger.info("Updated Password for Users");
+        return rows;
+    }
 }

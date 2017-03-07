@@ -84,6 +84,30 @@ public class UserDAOImpl{
         }
         return rows;
     }
+    public List<User> checkActivation(User user) throws DataServiceException {
+        StringBuilder stringBuilder = new StringBuilder("SELECT IFNULL((SELECT 1 FROM users WHERE email_id='"+user.getEmailId()+"' AND activation_code='"+user.getActivationCode()+"'),0) AS VERIFIED");
+        
+        List<User> rows = null;
+        try {
+            rows = dataRetriver.retrieveListBySQL(stringBuilder.toString());
+        } catch (DataAccessException e) {
+            e.printStackTrace();
+        }
+        logger.info("Employee data added");
+        return rows;
+    }
+    public Integer updatePassword(User user) throws DataServiceException {
+        StringBuilder stringBuilder = new StringBuilder("UPDATE users SET PASSWORD='" + user.getUserPassword()+ "' WHERE EMAIL_ID='" + user.getEmailId() + "'");
+
+        Integer rows = null;
+        try {
+            rows = dataRetriver.update(stringBuilder.toString());
+        } catch (DataAccessException e) {
+            e.printStackTrace();
+        }
+        logger.info("Employee data added");
+        return rows;
+    }
 	
 
 }

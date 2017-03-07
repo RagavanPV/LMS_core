@@ -1,5 +1,5 @@
 storeApp.controller('UserController', [ '$rootScope', '$scope', '$http',
-		'$location', function($rootScope, $scope, $http, $location) {
+		'$location','$routeParams', function($rootScope, $scope, $http, $location,$routeParams) {
 			var userStr = localStorage.getItem("LOGGED_IN_USER");
 
 			if (userStr == null) {
@@ -7,10 +7,7 @@ storeApp.controller('UserController', [ '$rootScope', '$scope', '$http',
 			} else {
 				$rootScope.LOGGED_IN_USER = JSON.parse(userStr);
 			}
-			$scope.changepassword = function() {
-				console.log($scope.password);
-				console.log($scope.cfrmpassword);
-			}
+			
 			$scope.cancelleave = function(leaveid) {
 				console.log($scope.LOGGED_IN_USER.userid+" "+leaveid);
 				var url = 'leavedetail/cancelleave?leaveid='+leaveid;

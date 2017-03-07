@@ -21,7 +21,7 @@ public class MailUtil {
         email.setSSLOnConnect(true);
         email.setFrom("ashpeekay23@gmail.com");// Admin email
         email.setSubject("Leave Management System");
-        email.setMsg("Use the following url to activate the account "+" http://localhost:8080/#/updatepassword/"+user.getEmailId()+"/"+user.getActivationCode());
+        email.setMsg("Use the following url to activate the account "+" http://localhost:8080/#/verifycode/"+user.getEmailId()+"/"+user.getActivationCode());
         email.addTo(user.getEmailId());
         email.setStartTLSEnabled(true);
         email.send();

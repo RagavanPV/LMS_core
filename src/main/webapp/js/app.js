@@ -16,10 +16,11 @@ config(['$routeProvider', function($routeProvider) {
         templateUrl: 'partials/applyleave.html',
         controller: "ApplyLeaveController"
     }).
-    when('/updatepassword/:email/:code', {
+/*    when('/updatepassword/:email', {
         templateUrl: 'partials/updatepassword.html',
+        controller:'UpdateController'
     }).
-    when('/userpage', {
+*/    when('/userpage', {
         templateUrl: 'partials/userpage.html',
         controller: "UserController"
     }).
@@ -41,6 +42,10 @@ config(['$routeProvider', function($routeProvider) {
     when('/addleavepolicy', {
         templateUrl: 'partials/addleavepolicy.html',
         controller: "LeavePolicyController"
+    }).
+    when('/verifycode/:email/:code', {
+    	templateUrl: 'partials/updatepassword.html',
+        controller: "UpdateController"
     }).
     when('/updateemployee/:empid', {
         templateUrl: 'partials/updateemployee.html',
