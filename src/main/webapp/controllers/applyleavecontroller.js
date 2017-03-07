@@ -17,6 +17,19 @@ storeApp.controller('ApplyLeaveController', ['$rootScope','$scope','$http','$loc
                 }).error(function() {
                     $location.path('/');
                 });
+                var url = 'employee/remleave?empid='+$scope.LOGGED_IN_USER.employeeid;
+               $http.get(url).success(function(response) {
+                    var remLeave = response[0];
+                    $scope.value=JSON.parse(remLeave.LEAVE_LEFT);
+                    if (remLeave != null) {
+                        $scope.remLeaves = remLeave;
+                    } else {
+                        $scope.error = "Cannot get Leave Types";
+                    }
+
+                }).error(function() {
+                    $location.path('/');
+                });
                 $scope.submit = function() {
                     if ($scope.day == 1) {
                         $scope.from_date = $filter('date')(

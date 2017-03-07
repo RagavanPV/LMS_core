@@ -100,4 +100,18 @@ public class EmployeeDAOImpl {
         logger.info("Employee data added");
         return rows;
     }
+	public List<Employee> getRemainingLeave(Employee employee) throws DataServiceException{
+        List<Employee> employees = null;
+        List<Employee> emp=null;
+        
+        try {
+            StringBuilder sb = new StringBuilder("select FN_GET_EMPLOYEE_LEAVES('"+employee.getId()+"')AS LEAVE_LEFT");
+            employees = dataRetriver.retrieveListBySQL(sb.toString());
+            logger.info("Categories data retrieval success..");
+        } catch (DataAccessException e) {
+            logger.error(e.getMessage(), e);
+            throw new DataServiceException(DataUtils.getPropertyMessage("data_retrieval_fail"), e);
+        }
+        return employees;
+    }
 }

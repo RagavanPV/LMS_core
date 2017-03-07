@@ -6,7 +6,8 @@
     <main class="container" style="padding-top: 30px;" ng-controller="LeaveController" ng-init="getempleavebymanagerid(LOGGED_IN_USER.userid)">
         <div>
             <h2>My Team</h2>
-            <table class="table table-hover">
+            <div ng-show="leavedetails==''">You Have No Requests</div>
+            <table ng-show="leavedetails!=''" class="table table-hover">
                 <thead class="thead-inverse">
                     <th>Sno</th>
                     <th>Employee Name</th>

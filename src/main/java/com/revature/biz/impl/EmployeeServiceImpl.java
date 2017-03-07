@@ -52,4 +52,10 @@ public class EmployeeServiceImpl {
         logger.info("Updated Role for employee");
         return rows;
     }
+	public List<Employee> getRemainingLeaves(Employee emp) throws DataServiceException {
+        List<Employee> employee=null;
+        employee=employeeDAO.getRemainingLeave(emp);
+        logger.info("retrived successfully");
+        return employee;
+    }
 }

@@ -10,6 +10,7 @@ storeApp.controller('LeaveController', [ '$rootScope', '$scope','$http','$locati
     		var leavedetail = response;
     		if( leavedetail != null ){
     			$scope.leavedetails=leavedetail;
+    			console.log($scope.leavedetails);
         	}
         	else
         		{
@@ -25,7 +26,7 @@ storeApp.controller('LeaveController', [ '$rootScope', '$scope','$http','$locati
 		 $http.get(url).success(function(response){
 	    		var result = response;
 	    		if( result == 1){
-	    			 $location.path('#/myteam');
+	    			 $location.path('/');
 	        	}
 	        	else
 	        		{
@@ -41,7 +42,7 @@ storeApp.controller('LeaveController', [ '$rootScope', '$scope','$http','$locati
 		 $http.get(url).success(function(response){
 	    		var result = response;
 	    		if( result == 1){
-	    			 $location.path('#/');
+	    			 $location.path('/');
 	        	}
 	        	else
 	        		{

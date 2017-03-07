@@ -7,6 +7,25 @@
 
 <main class="container" style="padding-top:30px" ng-controller="ApplyLeaveController">
 <div class="container">
+
+ <table class="table table-hover">
+                <thead class="thead-inverse">
+                    <th>Paid Leave</th>
+                    <th>Sick Leave</th>
+                    <th>Casual Leave</th>
+                    <th ng-show="LOGGED_IN_USER.gender=='F'">Maternity Leave</th>
+                    <th ng-show="LOGGED_IN_USER.gender=='M'">Paternity Leave</th>
+                    <th>Privileged Leave</th>
+                </thead>
+                  <tr>
+                  	<td>{{value.PaidLeave}}</td>
+                  	<td>{{value.SickLeave}}</td>
+                  	<td>{{value.CasualLeave}}</td>
+                  	<td ng-show="LOGGED_IN_USER.gender=='F'">{{value.MaternityLeave}}</td>
+                  	<td ng-show="LOGGED_IN_USER.gender=='M'">{{value.PaternityLeave}}</td>
+                  	<td>{{value.PrivilegedLeave}}</td>                  	
+                </tr>
+                </table>
 	<form method="GET">
 		<h2 class="form-signin-heading">Apply Leave</h2>
 		<div class="form-group row">
@@ -86,6 +105,7 @@
 			class="btn btn-lg btn-primary">
 			{{errMsg}}
 	</form>
+	
 </div>
 
 </main>

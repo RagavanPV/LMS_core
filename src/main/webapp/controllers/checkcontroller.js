@@ -13,14 +13,11 @@ storeApp.controller('CheckController', [ '$rootScope', '$scope', '$http',
 				"userPassword" : $scope.user.confirmPassword
 			}
 			var result = $http.post($scope.url, $scope.data);
-			console.log(result);
 			result.success(function(response) {
-				console.log(response);
 				if (response== 1) {
 					$location.path("/");
 				} else {
 					$scope.errMsg = "Cannot change";
-					console.log($scope.errMsg);
 				}
 			});
 			result.error(function(response) {
@@ -28,7 +25,6 @@ storeApp.controller('CheckController', [ '$rootScope', '$scope', '$http',
 			});
 		} else {
 			$scope.message = "There are still invalid fields below";
-			console.log($scope.message);
 		}
 	};
 

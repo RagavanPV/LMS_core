@@ -106,4 +106,16 @@ public class EmployeeController {
 	        }
 	        return null;
 	    }		
+	 @GetMapping("/remleave")
+	    public List<Employee> getRemainingLeaves(@RequestParam("empid") Integer id) {
+	        try {
+	            logger.info("Getting the Employee data...");
+	            Employee emp=new Employee();
+	            emp.setId(id);
+	            return employee.getRemainingLeaves(emp);
+	        } catch (DataServiceException e) {
+	            e.printStackTrace();
+	        }
+	        return null;
+	    }
 }
