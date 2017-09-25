@@ -10,7 +10,7 @@ storeApp.controller('CheckController', [ '$rootScope', '$scope', '$http',
 			$scope.url = "user/updatepassword";
 			$scope.data = {
 				"emailId" : email,
-				"userPassword" : $scope.user.confirmPassword
+				"userPassword" : hex_md5($scope.user.confirmPassword)
 			}
 			var result = $http.post($scope.url, $scope.data);
 			result.success(function(response) {

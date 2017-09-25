@@ -1,7 +1,7 @@
-storeApp.controller('UpdateController', [ '$rootScope', '$scope', '$http',
+storeApp.controller('VerifyController', [ '$rootScope', '$scope', '$http',
 		'$location','$routeParams', function($rootScope, $scope, $http, $location,$routeParams) {
 	$scope.verified=0;
-	$scope.validatecode=function(verify){
+	$scope.validatecode=function(){
 		$scope.email=$routeParams.email;
 		var url = 'user/verifycode?emailid=' + $scope.email+'&code='+$routeParams.code;
 		console.log(url);	

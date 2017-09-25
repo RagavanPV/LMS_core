@@ -21,7 +21,7 @@ public class RoleController {
 	private RoleServiceImpl roleService;
 
 	@GetMapping("/")
-	public List<Role> getAllHolidayController() {
+	public List<Role> getAllHoliday() {
 		List<Role> role = null;
 		try {
 			logger.info("Getting the Holiday data...");

@@ -1,53 +1,50 @@
 <div ng-controller="EmployeeController as ec" ng-init="getdetails()">
-	<nav style="padding-top: 70px" class="breadcrumb">
-		<a class="breadcrumb-item" href="#/">Home</a> <a
-			class="breadcrumb-item" href="#/viewemployees">View Employees</a> <span
-			class="breadcrumb-item active">{{employeesById.EMP_NAME}}</span>
-	</nav>
-	<div class="container" style="padding-top: 30px">
-		<h1>{{employeesById.EMP_NAME}}</h1>
-		<ul class="list-group">
-			<li class="list-group-item">
-			<div class="d-flex w-100 justify-content-between">
-					<h5 class="mb-1">Department</h5>
-				</div>
-				<div class="d-flex w-100 justify-content-between"><p class="mb-1">{{employeesById.DEPT_NAME}}</p>
-				<a href="" data-toggle="modal" data-target="#myModal"><i class="fa fa-pencil" aria-hidden="true"></i></a></div>
-			</li>
-			<li class="list-group-item"><div
-					class="d-flex w-100 justify-content-between">
-					<h5 class="mb-1">Role</h5>
-				</div>
-				<div class="d-flex w-100 justify-content-between"><p class="mb-1">{{employeesById.ROLE}}</p>
-				<a href=""><i class="fa fa-pencil" aria-hidden="true"></i></a></div>
-			</li>
-
-		</ul>
-
-	</div>
-
- <div class="modal fade" id="myModal" tabindex="-1" role="dialog" ng-controller="DepartmentController" aria-labelledby="exampleModalLabel" aria-hidden="true">
-            <div class="modal-dialog" role="document">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalLabel">Select Department</h5>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
-                    </div>
-                    <div class="modal-body">
-                        <form ng-submit="updatedeptforemp(employeesById.ID,dept)">
-                            <div class="input-group mb-2 mr-sm-2 mb-sm-0">
-                               <select	required name="dept" ng-model="dept" class="form-control col-10" id="exampleSelect1">
-				<option ng-repeat="department in departments" value={{department.ID}}>{{department.NAME}}</option>
-			</select>
-                            </div>
-                            <br>
-                            <input class="btn btn-primary" type="submit" value="Update Department">
-                        </form>
-                    </div>
-                   
+    <nav style="padding-top: 70px" class="breadcrumb">
+        <a class="breadcrumb-item" href="#/">Home</a> <a class="breadcrumb-item" href="#/viewemployees">View Employees</a> <span class="breadcrumb-item active">{{employeesById.EMP_NAME}}</span>
+    </nav>
+    <div class="container" style="padding-top: 30px">
+        <h1>{{employeesById.EMP_NAME}}</h1>
+        <ul class="list-group">
+            <li class="list-group-item">
+                <div class="d-flex w-100 justify-content-between">
+                    <h5 class="mb-1">Department</h5>
+                </div>
+                <div class="d-flex w-100 justify-content-between">
+                    <p class="mb-1">{{employeesById.DEPT_NAME}}</p>
+                    <a href="" data-toggle="modal" data-target="#myModal"><i class="fa fa-pencil" aria-hidden="true"></i></a></div>
+            </li>
+            <li class="list-group-item">
+                <div class="d-flex w-100 justify-content-between">
+                    <h5 class="mb-1">Role</h5>
+                </div>
+                <div class="d-flex w-100 justify-content-between">
+                    <p class="mb-1">{{employeesById.ROLE}}</p>
+                    <a href=""><i class="fa fa-pencil" aria-hidden="true"></i></a></div>
+            </li>
+        </ul>
+    </div>
+    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" ng-controller="DepartmentController" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Select Department</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form ng-submit="updatedeptforemp(employeesById.ID,dept)">
+                        <div class="input-group mb-2 mr-sm-2 mb-sm-0">
+                            <select required name="dept" ng-model="dept" class="form-control col-10" id="exampleSelect1">
+                                <option ng-repeat="department in departments" value={{department.ID}}>{{department.NAME}}
+                                </option>
+                            </select>
+                        </div>
+                        <br>
+                        <input class="btn btn-primary" type="submit" value="Update Department">
+                    </form>
                 </div>
             </div>
         </div>
-        </div>
+    </div>
+</div>

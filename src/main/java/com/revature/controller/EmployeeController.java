@@ -27,7 +27,7 @@ public class EmployeeController {
 	private EmployeeServiceImpl employee;
 
 	@GetMapping("/")
-	public List<Employee> getAllEmployeeController() {
+	public List<Employee> getAllEmployee() {
 		try {
 			logger.info("Getting the Employee data...");
 			return employee.getAllEmployee();
@@ -38,7 +38,7 @@ public class EmployeeController {
 	}
 
 	@GetMapping("/myteam")
-	public List<Employee> getEmpByManagerIdController(@RequestParam("userid") int managerId) {
+	public List<Employee> getEmpByManagerId(@RequestParam("userid") int managerId) {
 		try {
 			logger.info("Getting the Employee data...");
 			return employee.getEmpListByManagerId(managerId);
@@ -49,7 +49,7 @@ public class EmployeeController {
 	}
 
 	@GetMapping("/byempid")
-	public List<Employee> getEmpByIdController(@RequestParam("userid") int empid) {
+	public List<Employee> getEmpById(@RequestParam("userid") int empid) {
 		try {
 			logger.info("Getting the Employee data...");
 			return employee.getEmpListById(empid);

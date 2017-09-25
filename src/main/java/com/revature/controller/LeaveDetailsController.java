@@ -46,7 +46,7 @@ public class LeaveDetailsController {
         return null;
     }
     @GetMapping("/myteam")
-    public List<LeaveDetail> getEmpByManagerIdController(@RequestParam("userid") int managerId) {
+    public List<LeaveDetail> getEmpByManagerId(@RequestParam("userid") int managerId) {
         try {
             logger.info("Getting the Employee data...");
             return leaveDetailsServiceImpl.getEmpLeaveListByManagerId(managerId);
@@ -56,7 +56,7 @@ public class LeaveDetailsController {
         return null;
 }
     @GetMapping("/acceptleave")
-    public int acceptLeaveController(@RequestParam("leaveid")int leaveId,@RequestParam("userid") int managerId) {
+    public int acceptLeave(@RequestParam("leaveid")int leaveId,@RequestParam("userid") int managerId) {
         try {
             logger.info("Getting the Employee data...");
             return leaveDetailsServiceImpl.acceptLeave(leaveId,managerId);
@@ -66,7 +66,7 @@ public class LeaveDetailsController {
         return 0;
 }
     @GetMapping("/rejectleave")
-    public int rejectLeaveController(@RequestParam("leaveid")int leaveId,@RequestParam("userid") int managerId,@RequestParam("reason")String reason) {
+    public int rejectLeave(@RequestParam("leaveid")int leaveId,@RequestParam("userid") int managerId,@RequestParam("reason")String reason) {
         try {
             logger.info("Getting the Employee data...");
             return leaveDetailsServiceImpl.rejectLeave(leaveId,managerId,reason);
@@ -76,7 +76,7 @@ public class LeaveDetailsController {
         return 0;
 }
     @GetMapping("/cancelleave")
-    public int rejectLeaveController(@RequestParam("leaveid")int leaveId) {
+    public int rejectLeave(@RequestParam("leaveid")int leaveId) {
         try {
             logger.info("Getting the Employee data...");
             return leaveDetailsServiceImpl.cancelLeave(leaveId);

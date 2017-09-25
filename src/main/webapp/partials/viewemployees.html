@@ -44,7 +44,7 @@
 		</thead>
 		<tr
 			ng-repeat="employee in employees | filter: searchKeyword | orderBy: predicate">
-			<td>{{index+1}}</td>
+			<td>{{$index+1}}</td>
 			<td>{{employee.name}}</td>
 			<td>{{employee.roleName}}</td>
 			<td>{{employee.deptName}}</td>

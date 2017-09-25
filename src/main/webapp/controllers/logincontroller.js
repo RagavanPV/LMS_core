@@ -13,9 +13,9 @@ storeApp.controller('LoginController', [
 			} 
 
 			$scope.login = function() {
-				var url = 'user/GetUser?emailId=' + $scope.email + '&password='
-						+ $scope.password;
-				$http.get(url).success(
+				$scope.data={"emailId":$scope.email,"userPassword":hex_md5($scope.password)};
+//				console.log($scope.data);
+				$http.post('user/GetUser',$scope.data).success(
 						function(response) {
 							var user = response != null ? response[0] : null;
 							if (user != null) {

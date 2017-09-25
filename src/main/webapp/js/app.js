@@ -45,7 +45,7 @@ config(['$routeProvider', function($routeProvider) {
     }).
     when('/verifycode/:email/:code', {
     	templateUrl: 'partials/updatepassword.html',
-        controller: "UpdateController"
+        controller: "VerifyController"
     }).
     when('/updateemployee/:empid', {
         templateUrl: 'partials/updateemployee.html',

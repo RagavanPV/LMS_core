@@ -28,7 +28,7 @@ public class UserController {
 	private UserServiceImpl user;
 
 	@GetMapping
-	public ResponseEntity<List<User>> getAllUsersController() {
+	public ResponseEntity<List<User>> getAllUsers() {
 		List<User> userList=null;
 		ResponseEntity<List<User>> entity=new ResponseEntity<>(null, HttpStatus.UNAUTHORIZED);
 		try {
@@ -40,12 +40,12 @@ public class UserController {
 		return entity;
 		
 	}
-	@GetMapping("/GetUser")
-	public ResponseEntity<List<User>> getUserController(@RequestParam("emailId")String emailId,@RequestParam("password") String password) {
+	@PostMapping("/GetUser")
+	public ResponseEntity<List<User>> getUser(@RequestBody User details) {
 		List<User> userList=null;
 		ResponseEntity<List<User>> entity=new ResponseEntity<>(null, HttpStatus.UNAUTHORIZED);
 		try {
-			userList= user.getUser(emailId,password);
+			userList= user.getUser(details.getEmailId(),details.getUserPassword());
 			entity=new ResponseEntity<>(userList, HttpStatus.OK);
 		} catch (DataServiceException e) {
 			e.printStackTrace();

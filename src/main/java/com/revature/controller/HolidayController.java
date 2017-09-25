@@ -22,7 +22,7 @@ public class HolidayController {
 	private HolidayServiceImpl holidayService;
 
 	@GetMapping("/")
-	public List<Holiday> getAllHolidayController() {
+	public List<Holiday> getAllHoliday() {
 		List<Holiday> holidays = null;
 		try {
 			logger.info("Getting the Holiday data...");

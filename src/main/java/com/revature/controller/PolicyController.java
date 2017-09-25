@@ -21,7 +21,7 @@ public class PolicyController {
 	private PolicyServiceImpl policyService;
 
 	@GetMapping("/")
-	public List<Policy> getAllPolicyController() {
+	public List<Policy> getAllPolicy() {
 		List<Policy> policy = null;
 		try {
 			logger.info("Getting the Policy data...");

@@ -28,7 +28,7 @@ public class LeavePolicyController {
 	private LeavePolicyServiceImpl leavePolicyService;
 
 	@GetMapping("/")
-	public List<LeavePolicy> getAllLeavePolicyController() {
+	public List<LeavePolicy> getAllLeavePolicy() {
 		List<LeavePolicy> leavePolicy = null;
 		try {
 			logger.info("Getting the Leave Policy data...");

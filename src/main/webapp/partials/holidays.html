@@ -15,7 +15,7 @@
                 <tr ng-repeat="holiday in holidays">
                     <td>{{holiday.ID}}</td>
                     <td>{{holiday.NAME}}</td>
-                    <td>{{holiday.HOLIDAY_DATE}}</td>
+                    <td>{{holiday.HOLIDAY_DATE | date : "d,MMMM y"}}</td>
 					<td>{{holiday.DAY}}</td>
                 </tr>
             </table>
